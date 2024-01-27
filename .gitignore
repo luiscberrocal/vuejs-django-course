@@ -278,3 +278,4 @@ vuejs_django_course/media/
 .ipython/
 .env
 .envs/*
+.idea
