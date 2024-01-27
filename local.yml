@@ -1,84 +1,12 @@
 version: '3'
 
-volumes:
-  vuejs_django_course_local_postgres_data: {}
-  vuejs_django_course_local_postgres_data_backups: {}
 
 services:
-  django: &django
+  node:
     build:
       context: .
-      dockerfile: ./compose/local/django/Dockerfile
-    image: vuejs_django_course_local_django
-    container_name: vuejs_django_course_local_django
-    depends_on:
-      - postgres
-      - redis
+      dockerfile: ./compose/local/node/Dockerfile
+    image: vuejs_django_course_local_node
+    container_name: vuejs_django_course_local_node
     volumes:
       - .:/app:z
-    env_file:
-      - ./.envs/.local/.django
-      - ./.envs/.local/.postgres
-    ports:
-      - '8000:8000'
-    command: /start
-
-  postgres:
-    build:
-      context: .
-      dockerfile: ./compose/production/postgres/Dockerfile
-    image: vuejs_django_course_production_postgres
-    container_name: vuejs_django_course_local_postgres
-    volumes:
-      - vuejs_django_course_local_postgres_data:/var/lib/postgresql/data
-      - vuejs_django_course_local_postgres_data_backups:/backups
-    env_file:
-      - ./.envs/.local/.postgres
-
-  docs:
-    image: vuejs_django_course_local_docs
-    container_name: vuejs_django_course_local_docs
-    build:
-      context: .
-      dockerfile: ./compose/local/docs/Dockerfile
-    env_file:
-      - ./.envs/.local/.django
-    volumes:
-      - ./docs:/docs:z
-      - ./config:/app/config:z
-      - ./vuejs_django_course:/app/vuejs_django_course:z
-    ports:
-      - '9000:9000'
-    command: /start-docs
-
-  redis:
-    image: docker.io/redis:6
-    container_name: vuejs_django_course_local_redis
-
-  celeryworker:
-    <<: *django
-    image: vuejs_django_course_local_celeryworker
-    container_name: vuejs_django_course_local_celeryworker
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celeryworker
-
-  celerybeat:
-    <<: *django
-    image: vuejs_django_course_local_celerybeat
-    container_name: vuejs_django_course_local_celerybeat
-    depends_on:
-      - redis
-      - postgres
-    ports: []
-    command: /start-celerybeat
-
-  flower:
-    <<: *django
-    image: vuejs_django_course_local_flower
-    container_name: vuejs_django_course_local_flower
-    ports:
-      - '5555:5555'
-    command: /start-flower
