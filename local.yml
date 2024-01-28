@@ -9,4 +9,4 @@ services:
     image: vuejs_django_course_local_node
     container_name: vuejs_django_course_local_node
     volumes:
-      - ./vuejs-frontend/gs-02-first-app-with-just-js:/app
+      - ./vuejs-frontend/gs-02-first-app-with-just-js:/app:z
