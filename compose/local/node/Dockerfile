@@ -1,25 +1,16 @@
 FROM node:21.6-alpine3.19
 
-RUN npm install --quiet --global @vue/cli
-# install simple http server for serving static content
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy the application's files into the container
+COPY ./vuejs-frontend/gs-02-first-app-with-just-js/ .
+
+# Install http-server globally
 RUN npm install -g http-server
 
-# make the 'app' folder the current working directory
-WORKDIR /app
-
-# copy both 'package.json' and 'package-lock.json' (if available)
-# COPY package*.json ./
-
-# install project dependencies
-# RUN npm install
-
-# copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY . .
-
-RUN touch test.txt
-
-# build app for production with minification
-# RUN npm run build
-
+# Make port 8080 available to the world outside this container
 EXPOSE 8080
-CMD [ "http-server", "dist" ]
+
+# Run http-server when the container launches
+CMD ["http-server", "-p 8080"]

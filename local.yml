@@ -8,5 +8,7 @@ services:
       dockerfile: ./compose/local/node/Dockerfile
     image: vuejs_django_course_local_node
     container_name: vuejs_django_course_local_node
+    ports:
+      - "8080:8080"
     volumes:
-      - ./vuejs-frontend/gs-02-first-app-with-just-js:/app:z
+      - ./vuejs-frontend/gs-02-first-app-with-just-js:/usr/src/app
