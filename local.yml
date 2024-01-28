@@ -11,4 +11,4 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./vuejs-frontend/gs-02-first-app-with-just-js:/usr/src/app
+      - ./vuejs-frontend/src:/usr/src/app
