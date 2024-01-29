@@ -22,10 +22,10 @@
       <p>Favorite Number: {{ getRandom() }}</p>
       <div>
         <!-- 5) Display some image you found via Google -->
-        <img src="SOME IMAGE URL" />
+        <img v-bind:src="imageLink" />
       </div>
       <!-- 6) Prepopulate the input field with your name via the "value" attribute -->
-      <input type="text" />
+      <input type="text" v-bind:value="name" />
     </section>
     <script src="https://unpkg.com/vue@3.4.9/dist/vue.global.js"></script>
     <script src="app.js" defer></script>
