@@ -2,7 +2,8 @@ const app = Vue.createApp(
     {
         data() {
             return {
-                output: ""
+                output: "",
+                finalOutput: ""
             }
         },
         methods: {
@@ -10,12 +11,14 @@ const app = Vue.createApp(
                 alert('Danger');
             },
             showOutput(event, onEnter) {
+                console.log('onEnter', onEnter)
+                console.log('value', event.target.value)
                 if (onEnter){
-
+                    this.finalOutput = event.target.value
                 } else {
                     this.output = event.target.value;
                 }
-            }
+            },
         }
     }
 )
