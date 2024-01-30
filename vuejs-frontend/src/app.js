@@ -3,17 +3,25 @@ const app = Vue.createApp(
         data() {
             return {
                 counter: 0,
-                message: ""
             };
         },
         watch: {
-            counter() {
-                if (this.counter < 37) {
-                    this.message = "Not there yet";
+            message() {
+                const that = this;
+                setTimeout(function(){
+                    that.counter = 0;
+                }, 5000);
+            }
+        },
+        computed: {
+            message(){
+                 if (this.counter < 37) {
+                    return "Not there yet";
                 }
                 if (this.counter > 37){
-                    this.message = "Too much";
+                    return "Too much";
                 }
+
             }
         },
         methods: {
