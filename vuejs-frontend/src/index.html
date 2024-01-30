@@ -19,7 +19,7 @@
 <section id="assignment">
   <!-- 1) Fetch the user input and use it as a CSS class -->
   <!-- The entered class should be added to the below paragraph -->
-  <input type="text" :value="styleNum"/>
+  <input type="text" v-model="styleNum"/>
   <!-- (available classes: "user1", "user2") -->
   <p :class="currentStyle">
     Style me {{ styleNum }}!
