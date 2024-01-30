@@ -1,9 +1,22 @@
-const app = Vue.createApp({
-  data() {
-    return {
-      counter: 0,
-    };
-  },
-});
+const app = Vue.createApp(
+    {
+        data() {
+            return {
+                output: ""
+            }
+        },
+        methods: {
+            showAlert() {
+                alert('Danger');
+            },
+            showOutput(event, onEnter) {
+                if (onEnter){
 
-app.mount('#events');
+                } else {
+                    this.output = event.target.value;
+                }
+            }
+        }
+    }
+)
+app.mount("#assignment")
