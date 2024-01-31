@@ -7,6 +7,7 @@ VueJS Course
 
 License: MIT
 
+Repo to follow https://www.udemy.com/course/vuejs-2-the-complete-guide/
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
