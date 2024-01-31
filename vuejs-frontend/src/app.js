@@ -2,23 +2,26 @@ const app = Vue.createApp(
     {
         data() {
             return {
-                styleNum: 0
+                styleName: "",
+                paraIsVisible: true,
+                backGroundColor: ""
             };
         },
         watch: {},
         computed: {
-            currentStyle() {
-                console.log("Setting current style",  this.styleNum);
-                if (this.styleNum === 0) {
-                    return "";
-                } else if (this.styleNum === 1 || this.styleNum === 2) {
-                    return "user" + this.styleNum;
-                } else {
-                    return "";
+            paraClasses() {
+                return {
+                    user1: this.styleName === "user1",
+                    user2: this.styleName === "user2",
+                    visible: this.paraIsVisible,
+                    hidden: !this.paraIsVisible,
                 }
             }
         },
         methods: {
+            toggleVisibility(){
+                this.paraIsVisible = !this.paraIsVisible
+            }
         }
     }
 )
