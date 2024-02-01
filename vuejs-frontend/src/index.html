@@ -20,8 +20,8 @@
       <h2>Assignment</h2>
       <!-- 1) Add code to manage a list of tasks in a Vue app -->
       <!-- When clicking "Add Task" a new task with the entered text should be added -->
-      <input type="text" v-model="newGoal">
-      <button @click="addGoal">Add Task</button>
+      <input type="text" v-model="newGoal" v-if="inputVisible">
+      <button @click="addGoal" v-if="inputVisible">Add Task</button>
       <ul v-if="paraIsVisible">
         <li v-for="goal in goals">{{ goal }}</li>
         <!-- 2) Output the list of tasks here -->

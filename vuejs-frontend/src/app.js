@@ -3,27 +3,22 @@ const app = Vue.createApp(
         data() {
             return {
                 paraIsVisible: true,
+                inputVisible: true,
                 newGoal: "",
                 goals: []
             };
         },
         watch: {},
-        computed: {
-            paraClasses() {
-                return {
-                    visible: this.paraIsVisible,
-                    hidden: !this.paraIsVisible,
-                }
-            }
-        },
+        computed: {},
         methods: {
             addGoal() {
                 this.goals.push(this.newGoal);
                 this.newGoal = "";
             },
             toggleVisibility() {
-                console.log('Vis', this.paraIsVisible)
+                // console.log('Vis', this.paraIsVisible);
                 this.paraIsVisible = !this.paraIsVisible;
+                this.inputVisible = this.paraIsVisible;
             }
         }
     }
