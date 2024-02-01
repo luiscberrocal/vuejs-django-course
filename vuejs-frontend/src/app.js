@@ -22,6 +22,7 @@ const app = Vue.createApp(
                 this.newGoal = "";
             },
             toggleVisibility() {
+                console.log('Vis', this.paraIsVisible)
                 this.paraIsVisible = !this.paraIsVisible;
             }
         }
