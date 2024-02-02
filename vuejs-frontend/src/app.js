@@ -11,7 +11,14 @@ const app = Vue.createApp(
             };
         },
         watch: {},
-        computed: {},
+        computed: {
+            monsterHealthBar(){
+                return {width: this.monsterHealth + '%'}
+            },
+            playerHealthBar(){
+                return {width: this.playerHealth + '%'}
+            }
+        },
         methods: {
             attackMonster() {
                 const attackValue = getAttackValue(8, 12);
