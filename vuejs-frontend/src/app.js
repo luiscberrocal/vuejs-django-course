@@ -21,7 +21,7 @@ const app = Vue.createApp(
                 }
             },
             monsterHealth(value) {
-                if (value <= 0 && this.monsterHealth <= 0) {
+                if (value <= 0 && this.playerHealth <= 0) {
                     this.winner = 'draw';
                 } else if (value <= 0) {
                     this.winner = 'player';
@@ -31,9 +31,15 @@ const app = Vue.createApp(
         },
         computed: {
             monsterHealthBar() {
+                if (this.monsterHealth <= 0) {
+                    return {width: "0%"};
+                }
                 return {width: this.monsterHealth + '%'}
             },
             playerHealthBar() {
+                if (this.playerHealth <= 0) {
+                    return {width: "0%"};
+                }
                 return {width: this.playerHealth + '%'}
             },
             allowSpecialAttack() {
