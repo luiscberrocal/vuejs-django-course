@@ -1,4 +1,4 @@
-function getAttackValue(min, max) {
+function getRandomValue(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
 
@@ -8,10 +8,27 @@ const app = Vue.createApp(
             return {
                 playerHealth: 100,
                 monsterHealth: 100,
-                currentRound: 0
+                currentRound: 0,
+                winner: null
             };
         },
-        watch: {},
+        watch: {
+            playerHealth(value) {
+                if (value <= 0 && this.monsterHealth <= 0) {
+                    this.winner = 'draw';
+                } else if (value <= 0) {
+                    this.winner = 'monster';
+                }
+            },
+            monsterHealth(value) {
+                if (value <= 0 && this.monsterHealth <= 0) {
+                    this.winner = 'draw';
+                } else if (value <= 0) {
+                    this.winner = 'player';
+                }
+
+            }
+        },
         computed: {
             monsterHealthBar() {
                 return {width: this.monsterHealth + '%'}
@@ -19,27 +36,37 @@ const app = Vue.createApp(
             playerHealthBar() {
                 return {width: this.playerHealth + '%'}
             },
-            allowSpecialAttack(){
+            allowSpecialAttack() {
                 return this.currentRound % 3 !== 0;
             }
         },
         methods: {
             attackMonster() {
                 this.currentRound++;
-                const attackValue = getAttackValue(5, 12);
+                const attackValue = getRandomValue(5, 12);
                 this.monsterHealth -= attackValue;
                 this.attackPlayer();
             },
             attackPlayer() {
-                const attackValue = getAttackValue(8, 15);
+                const attackValue = getRandomValue(8, 15);
                 this.playerHealth -= attackValue;
             },
             specialAttackMonster() {
                 this.currentRound++;
-                const attackValue = getAttackValue(10, 25);
+                const attackValue = getRandomValue(10, 25);
                 this.monsterHealth -= attackValue;
                 this.attackPlayer();
             },
+            healPlayer() {
+                this.currentRound++;
+                const healValue = getRandomValue(8, 20);
+                if (this.playerHealth + healValue > 100) {
+                    this.playerHealth = 100;
+                } else {
+                    this.playerHealth += healValue;
+                }
+                this.attackPlayer()
+            }
         }
     }
 )

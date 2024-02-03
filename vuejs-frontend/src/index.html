@@ -33,10 +33,15 @@
       <div class="healthbar__value" :style="playerHealthBar"></div>
     </div>
   </section>
+  <section>
+    <h2>You won!</h2>
+    <h2>Game over</h2>
+    <h2>You lost</h2>
+  </section>
   <section id="controls">
     <button @click="attackMonster">ATTACK</button>
     <button :disabled="allowSpecialAttack" @click="specialAttackMonster">SPECIAL ATTACK</button>
-    <button>HEAL</button>
+    <button @click="healPlayer">HEAL</button>
     <button>SURRENDER</button>
   </section>
   <section id="log" class="container">
