@@ -8,7 +8,8 @@ COPY ./vuejs-frontend/src/ .
 
 # Install http-server globally
 RUN npm install -g http-server
-
+# Install Vue CLI
+RUN npm install -g @vue/cli
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 

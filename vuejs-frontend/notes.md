@@ -1,0 +1,11 @@
+
+
+
+```angular2html
+"scripts": {  
+  "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",  
+  "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",  
+  "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint"
+},
+
+```
