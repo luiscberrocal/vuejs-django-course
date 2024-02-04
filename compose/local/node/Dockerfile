@@ -4,7 +4,7 @@ FROM node:21.6-alpine3.19
 WORKDIR /usr/src/app
 
 # Copy the application's files into the container
-COPY ./vuejs-frontend/src/first-vue-app .
+COPY ./vuejs-frontend/src .
 
 # Install http-server globally
 RUN npm install -g http-server
