@@ -3,11 +3,6 @@ export default {
   data() {
     return {
       detailsVisible: false,
-      friend2: {
-        name: "Luis",
-        phone: "889-0000",
-        email: "pop@hoca.com"
-      }
     }
   },
     props:[
@@ -19,7 +14,6 @@ export default {
   methods: {
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible;
-      // this.friend = this.frnd;
     }
   }
 }
