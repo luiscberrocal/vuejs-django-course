@@ -21,7 +21,7 @@ export default {
 <template>
   <li>
     <h2>{{ friend.name }}</h2>
-    <button @click="toggleDetails">Show details</button>
+    <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show'}} details</button>
     <ul v-if="detailsVisible">
       <li><strong>Phone:</strong>{{ friend.phone }}</li>
       <li><strong>Email:</strong>{{ friend.email }}</li>
