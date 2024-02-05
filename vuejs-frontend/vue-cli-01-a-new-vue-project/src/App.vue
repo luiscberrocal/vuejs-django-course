@@ -2,20 +2,7 @@
 export default {
   data() {
     return {
-      friends: [
-        {
-          id: "luis",
-          name: "Luis",
-          phone: "899-9000",
-          email: "luis@kilo.com"
-        },
-        {
-          id: "mabel",
-          name: "Mabel",
-          phone: "899-93333",
-          email: "mabel@kilo.com"
-        },
-      ]
+      friends: []
     }
   }
 }
@@ -23,21 +10,16 @@ export default {
 
 <template>
   <section>
-    <header><h1>My Friends</h1></header>
+   <header><h1>My Friends</h1></header>
     <ul>
-      <friend-contact
-          v-for="friend in friends"
-          :key="friend.id"
-          :name="friend.name"
-          :phone="friend.phone"
-          :email="friend.email"></friend-contact>
+        <friend-contact name="Luis" phone="85558-7888" email="luis@n.com"></friend-contact>
+        <friend-contact name="Maria" phone="85558-78887" email="maria@n.com"></friend-contact>
     </ul>
   </section>
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-
 * {
   box-sizing: border-box;
 }
