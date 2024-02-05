@@ -12,8 +12,8 @@ export default {
   <section>
    <header><h1>My Friends</h1></header>
     <ul>
-        <friend-contact></friend-contact>
-        <friend-contact></friend-contact>
+        <friend-contact name="Luis" phone="85558-7888" email="luis@n.com"></friend-contact>
+        <friend-contact name="Maria" phone="85558-78887" email="maria@n.com"></friend-contact>
     </ul>
   </section>
 </template>
