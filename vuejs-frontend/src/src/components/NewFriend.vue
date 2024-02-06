@@ -6,25 +6,33 @@ export default {
       newFriendPhone: '',
       newFriendEmail: '',
     }
+  },
+  emits: [
+    'add-friend'
+  ],
+  methods: {
+    saveData() {
+      this.$emit('add-friend', this.newFriendName, this.newFriendPhone, this.newFriendEmail)
+    }
   }
 }
 </script>
 
 <template>
-  <form action="">
+  <form @submit.prevent="">
     <div>
       <label for="inputName">Name:</label>
       <input type="text" id="inputName" v-model="newFriendName">
     </div>
     <div>
       <label for="inputPhone">Phone:</label>
-      <input type="text" id="inputPhone" v-model="newFriendPhone">
+      <input type="tel" id="inputPhone" v-model="newFriendPhone">
     </div>
     <div>
       <label for="inputEmail">Email:</label>
-      <input type="text" id="inputEmail" v-model="newFriendEmail">
+      <input type="email" id="inputEmail" v-model="newFriendEmail">
     </div>
-    <button>Save</button>
+    <button @click="saveData">Save</button>
   </form>
 </template>
 
@@ -44,6 +52,7 @@ export default {
 #app form div {
   margin: 1rem 0;
 }
+
 #app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;

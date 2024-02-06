@@ -2,7 +2,7 @@
 import NewFriend from "./components/NewFriend.vue";
 
 export default {
-    components: {NewFriend},
+  components: {NewFriend},
   data() {
     return {
       friends: [
@@ -10,15 +10,30 @@ export default {
           id: "luis",
           name: "Luis",
           phone: "899-9000",
-          email: "luis@kilo.com"
+          email: "luis@kilo.com",
+          isFavorite: false
         },
         {
           id: "mabel",
           name: "Mabel",
           phone: "899-93333",
-          email: "mabel@kilo.com"
+          email: "mabel@kilo.com",
+          isFavorite: true
         },
       ]
+    }
+  },
+  methods: {
+    addFriend(name, phone, email) {
+      const newFriend = {
+        id: new Date().toISOString(),
+        name: name,
+        phone: phone,
+        email: email,
+        isFavorite: false
+      };
+      this.friends.push(newFriend);
+
     }
   }
 }
@@ -27,7 +42,7 @@ export default {
 <template>
   <section>
     <header><h1>My Friends</h1></header>
-      <new-friend></new-friend>
+    <new-friend @add-friend="addFriend"></new-friend>
     <ul>
       <friend-contact
           v-for="friend in friends"
