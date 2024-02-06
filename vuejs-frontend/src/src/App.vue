@@ -1,5 +1,8 @@
 <script>
+import NewFriend from "./components/NewFriend.vue";
+
 export default {
+    components: {NewFriend},
   data() {
     return {
       friends: [
@@ -24,6 +27,7 @@ export default {
 <template>
   <section>
     <header><h1>My Friends</h1></header>
+      <new-friend></new-friend>
     <ul>
       <friend-contact
           v-for="friend in friends"
