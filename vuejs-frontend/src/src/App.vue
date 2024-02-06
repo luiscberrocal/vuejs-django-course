@@ -33,7 +33,10 @@ export default {
         isFavorite: false
       };
       this.friends.push(newFriend);
-
+    },
+    deleteFriend(friendId) {
+      console.log('DELETING', friendId)
+      this.friends = this.friends.filter((friend) => friend.id !== friendId);
     }
   }
 }
@@ -47,10 +50,12 @@ export default {
       <friend-contact
           v-for="friend in friends"
           :key="friend.id"
+          :id="friend.id"
           :name="friend.name"
           :phone="friend.phone"
           :email="friend.email"
           :is-favorite="friend.isFavorite"
+          @delete="deleteFriend"
       ></friend-contact>
     </ul>
   </section>

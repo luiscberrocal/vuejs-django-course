@@ -6,12 +6,15 @@ export default {
     }
   },
   props: [
+    'id',
     'name',
     'phone',
     'email',
     'isFavorite'
-  ]
-  ,
+  ],
+  emits: [
+    'delete'
+  ],
   methods: {
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible;
@@ -28,6 +31,7 @@ export default {
       <li><strong>Phone:</strong>{{ phone }}</li>
       <li><strong>Email:</strong>{{ email }}</li>
     </ul>
+    <button @click="$emit('delete', id)">Delete</button>
   </li>
 </template>
 
