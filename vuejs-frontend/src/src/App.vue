@@ -49,7 +49,9 @@ export default {
           :key="friend.id"
           :name="friend.name"
           :phone="friend.phone"
-          :email="friend.email"></friend-contact>
+          :email="friend.email"
+          :is-favorite="friend.isFavorite"
+      ></friend-contact>
     </ul>
   </section>
 </template>

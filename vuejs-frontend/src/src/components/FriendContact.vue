@@ -5,12 +5,13 @@ export default {
       detailsVisible: false,
     }
   },
-    props:[
-        'name',
-        'phone',
-        'email'
-    ]
-    ,
+  props: [
+    'name',
+    'phone',
+    'email',
+    'isFavorite'
+  ]
+  ,
   methods: {
     toggleDetails() {
       this.detailsVisible = !this.detailsVisible;
@@ -21,8 +22,8 @@ export default {
 
 <template>
   <li>
-    <h2>{{ name }}</h2>
-    <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show'}} details</button>
+    <h2>{{ name }} <span v-if="isFavorite">(Favorite)</span></h2>
+    <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show' }} details</button>
     <ul v-if="detailsVisible">
       <li><strong>Phone:</strong>{{ phone }}</li>
       <li><strong>Email:</strong>{{ email }}</li>
