@@ -5,6 +5,14 @@ export default {
       name: '',
       age: null
     }
+  },
+  emits: [
+    'save-data'
+  ],
+  methods: {
+    save() {
+      this.$emit('save-data', this.name, this.age)
+    }
   }
 }
 </script>
@@ -14,9 +22,11 @@ export default {
   <div>
     <h2>User Data</h2>
     <form @submit.prevent>
-      <input type="text" v-model="name">
-      <input type="number" v-model="age">
-      <button>Save</button>
+      <label for="name">Name:</label>
+      <input id="name" type="text" v-model="name">
+      <label for="age">Age:</label>
+      <input id="age" type="number" v-model="age">
+      <button @click="save">Save</button>
     </form>
   </div>
 </template>

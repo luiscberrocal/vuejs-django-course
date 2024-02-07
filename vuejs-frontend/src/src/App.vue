@@ -1,12 +1,25 @@
 <script>
-
+export default {
+    data() {
+        return {
+            name: 'ts',
+            age: 33
+        }
+    },
+    methods:{
+        save(name, age){
+            this.name = name;
+            this.age = age;
+        }
+    }
+}
 </script>
 
 <template>
   <section>
     <h2>User Application</h2>
-    <active-user name="Luis" age="51"></active-user>
-    <user-data></user-data>
+    <active-user :name="name" :age="age"></active-user>
+    <user-data @save-data="save"></user-data>
   </section>
 </template>
 
