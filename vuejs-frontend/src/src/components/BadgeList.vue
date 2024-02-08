@@ -1,6 +1,6 @@
 <template>
-  <base-card>
-    <section>
+  <section>
+    <base-card>
       <h2>Available Badges</h2>
       <ul>
         <li>
@@ -10,8 +10,9 @@
           <base-badge type="author" caption="AUTHOR"></base-badge>
         </li>
       </ul>
-    </section>
-  </base-card>
+    </base-card>
+  </section>
+
 </template>
 
 <style scoped>
@@ -32,3 +33,5 @@ li {
   margin-right: 1rem;
 }
 </style>
+<script setup>
+</script>
