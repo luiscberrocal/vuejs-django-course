@@ -2,14 +2,16 @@
 export default {
   data() {
     return {
-      name: 'ts',
-      age: 33
+      currentUser: {
+        name: '',
+        age: null
+      }
     }
   },
   methods: {
     save(name, age) {
-      this.name = name;
-      this.age = age;
+      this.currentUser.name = name;
+      this.currentUser.age = age;
     }
   }
 }
@@ -17,7 +19,7 @@ export default {
 
 <template>
   <h2>User Application</h2>
-  <active-user :name="name" :age="age"></active-user>
+  <active-user :name="currentUser.name" :age="currentUser.age"></active-user>
   <user-data @save-data="save"></user-data>
 </template>
 
