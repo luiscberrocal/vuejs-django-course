@@ -7,10 +7,10 @@ export default {
 }
 </script>
 <template>
-  <div>
+  <section>
     <h2>{{ name }}</h2>
       <h3>{{ age }}</h3>
-  </div>
+  </section>
 </template>
 
 <style scoped>

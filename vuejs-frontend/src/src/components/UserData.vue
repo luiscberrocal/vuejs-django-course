@@ -19,7 +19,7 @@ export default {
 
 <template>
 
-  <div>
+  <section>
     <h2>User Data</h2>
     <form @submit.prevent>
       <label for="name">Name:</label>
@@ -28,7 +28,7 @@ export default {
       <input id="age" type="number" v-model="age">
       <button @click="save">Save</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <style scoped>
