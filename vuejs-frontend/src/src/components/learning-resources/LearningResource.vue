@@ -1,5 +1,8 @@
 <script>
+import BaseCard from "../UI/BaseCard.vue";
+
 export default {
+    components: {BaseCard},
   props: [
     'title',
     'description',
@@ -14,7 +17,7 @@ export default {
 
 <template>
   <li>
-    <div>
+    <base-card>
       <header>
         <h3>{{ title }}</h3>
         <div>
@@ -22,11 +25,11 @@ export default {
           <button>Share</button>
         </div>
       </header>
-    </div>
-    <p>{{ description }}</p>
-    <nav>
-      <a :href="link" target="_blank">View resource</a>
-    </nav>
+      <p>{{ description }}</p>
+      <nav>
+        <a :href="link" target="_blank">View resource</a>
+      </nav>
+    </base-card>
   </li>
 </template>
 
