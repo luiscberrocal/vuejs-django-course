@@ -28,8 +28,7 @@ export default {
 </script>
 
 <template>
-  <base-dialog v-if="inputIsInvalid" title="Invalid Data">
-
+  <base-dialog v-if="inputIsInvalid" title="Invalid Data" @close="confirmError">
     <template #default>
       <p>Please enter all data required.</p>
     </template>
