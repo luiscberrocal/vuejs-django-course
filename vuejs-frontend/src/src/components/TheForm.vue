@@ -1,5 +1,10 @@
 <script>
+import RatingControl from "./RatingControl.vue";
+
 export default {
+  components: {
+    RatingControl
+  },
   data() {
     return {
       name: 'Luis',
@@ -79,6 +84,7 @@ export default {
         <label for="confirm-terms">Confirm terms</label>
       </div>
     </div>
+      <rating-control></rating-control>
     <div>
       <button type="submit">Save Data</button>
     </div>
