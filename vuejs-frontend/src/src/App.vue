@@ -1,5 +1,10 @@
 <script>
+import LearningResource from "./components/learning-resources/LearningResource.vue";
+
 export default {
+  components: {
+    LearningResource
+  },
   data() {
     return {
       storedResources: [
@@ -33,12 +38,12 @@ export default {
 
 <template>
   <ul>
-    <li v-for="resource in storedResources" :key="resource.id">
-      <h2>{{ resource.title }}</h2>
-      <p>{{ resource.date }}</p>
-      <p>{{ resource.description }}</p>
-      <a :href="resource.link" target="_blank">Link</a>
-    </li>
+    <learning-resource v-for="resource in storedResources"
+                       :key="resource.id"
+                       :title="resource.title"
+                       :description="resource.description"
+                       :link="resource.link"
+    ></learning-resource>
   </ul>
 </template>
 
