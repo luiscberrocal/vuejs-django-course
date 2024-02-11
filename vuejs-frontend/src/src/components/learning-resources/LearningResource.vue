@@ -1,8 +1,6 @@
 <script>
-import BaseCard from "../UI/BaseCard.vue";
 
 export default {
-    components: {BaseCard},
   props: [
     'title',
     'description',
