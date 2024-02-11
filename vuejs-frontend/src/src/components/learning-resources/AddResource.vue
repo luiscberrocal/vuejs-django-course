@@ -2,9 +2,22 @@
 export default {
   props: [],
   data() {
-    return {};
+    return {
+      newResource: {
+        title: '',
+        description: '',
+        link: ''
+      }
+    };
   },
-  methods: {},
+  emits: ['add-resource'],
+  methods: {
+    addResource(event) {
+      // event.preventDefault();
+      console.log(this.newResource);
+      this.$emit('add-resource', this.newResource);
+    }
+  },
   computed: {}
 }
 </script>
@@ -12,21 +25,21 @@ export default {
 <template>
   <base-card>
     <form>
-      <div class="form-control">
+      <div class="form-control" @submit.prevent>
         <label for="title">Title</label>
-        <input type="text" id="title">
+        <input type="text" id="title" v-model="newResource.title">
       </div>
       <div class="form-control">
         <label for="description">Description</label>
-        <textarea id="description" rows="3"></textarea>
+        <textarea id="description" rows="3" v-model="newResource.description"></textarea>
       </div>
       <div class="form-control">
         <label for="link">Link</label>
-        <input type="url" id="link">
+        <input type="url" id="link" v-model="newResource.link">
       </div>
       <div class="form-control">
-        <base-button
-                type="submit"
+        <base-button @click="addResource"
+                     type="submit"
         >Add Resource
         </base-button>
       </div>

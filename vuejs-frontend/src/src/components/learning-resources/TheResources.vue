@@ -39,6 +39,9 @@ export default {
     }
   },
   methods: {
+    addResource(resource) {
+      this.storedResources.unshift(resource);
+    },
     setSelectTab(tab) {
       this.selectedTab = tab;
     }
@@ -55,7 +58,7 @@ export default {
 </script>
 
 <template>
-  <base-card>
+  <base-card @add-ressource="addResource">
     <base-button @click="setSelectTab('stored-resources')"
                  :mode="setButtonMode1"
     >Stored Resources
