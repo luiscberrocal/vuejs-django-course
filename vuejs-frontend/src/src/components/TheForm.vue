@@ -9,7 +9,9 @@ export default {
         age: 45,
         referrer: 'google',
         interest: [],
-        how: ''
+        how: '',
+        confirm: false
+
       }
     };
   },
@@ -58,16 +60,23 @@ export default {
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" v-model="formData.how"/>
+        <input id="how-video" name="how" type="radio" value="video" v-model="formData.how"/>
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" v-model="formData.how"/>
+        <input id="how-blogs" name="how" type="radio" value="blogs" v-model="formData.how"/>
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" v-model="formData.how"/>
+        <input id="how-other" name="how" type="radio" value="other" v-model="formData.how"/>
         <label for="how-other">Other</label>
+      </div>
+    </div>
+    <div class="form-control">
+      <h2>Confirming</h2>
+      <div>
+        <input id="confirm-terms" name="confirm-terms" type="checkbox" v-model="formData.confirm"/>
+        <label for="confirm-terms">Confirm terms</label>
       </div>
     </div>
     <div>
