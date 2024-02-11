@@ -1,12 +1,36 @@
+<script>
+export default {
+  data() {
+    return {
+      name: 'Luis',
+      age: 34,
+      formData: {
+        userName: 'Juan',
+        age: 45,
+        referrer: 'google',
+        interest: [],
+        how: ''
+      }
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log(this.name)
+      // event.preventDefault();
+      console.log(this.formData);
+    }
+  }
+};
+</script>
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+      <input id="user-name" name="user-name" type="text" v-model="formData.userName"/>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+      <input id="age" name="age" type="number" v-model="formData.age"/>
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -19,35 +43,35 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+        <input id="interest-news" name="interest" type="checkbox"/>
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input id="interest-tutorials" name="interest" type="checkbox"/>
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input id="interest-nothing" name="interest" type="checkbox"/>
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input id="how-video" name="how" type="radio"/>
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input id="how-blogs" name="how" type="radio"/>
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input id="how-other" name="how" type="radio"/>
         <label for="how-other">Other</label>
       </div>
     </div>
     <div>
-      <button>Save Data</button>
+      <button type="submit">Save Data</button>
     </div>
   </form>
 </template>
