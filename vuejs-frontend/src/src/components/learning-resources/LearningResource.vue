@@ -17,7 +17,10 @@ export default {
     <div>
       <header>
         <h3>{{ title }}</h3>
-        <button>Delete</button>
+        <div>
+          <button>Delete</button>
+          <button>Share</button>
+        </div>
       </header>
     </div>
     <p>{{ description }}</p>
