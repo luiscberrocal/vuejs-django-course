@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['displayName'],
+  props: ['mode', 'type'],
   data() {
     return {};
   },
@@ -10,7 +10,9 @@ export default {
 </script>
 
 <template>
-  <button>{{ displayName }}</button>
+  <button :class="mode" :type="type">
+    <slot></slot>
+  </button>
 </template>
 
 <style scoped>
