@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['mode', 'type'],
+  props: ['mode'],
   data() {
     return {};
   },
@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <button :class="mode" :type="type">
+  <button :class="mode">
     <slot></slot>
   </button>
 </template>
