@@ -2,7 +2,9 @@
 export default {
   props: [],
   data() {
-    return {};
+    return {
+      inputIsInvalid: false
+    };
   },
   inject: ['addResource'],
   methods: {
@@ -11,7 +13,9 @@ export default {
       const title = this.$refs.titleInput.value;
       const description = this.$refs.descriptionInput.value;
       const link = this.$refs.linkInput.value;
-      console.log('Append Resource', title, description, link);
+      if (title.trim() === '' || description.trim() === '' || link.trim() === '') {
+        console.log('ddd')
+      }
       this.addResource(title, description, link);
 
     },
