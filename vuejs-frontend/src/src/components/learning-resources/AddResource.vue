@@ -13,17 +13,30 @@ export default {
       const title = this.$refs.titleInput.value;
       const description = this.$refs.descriptionInput.value;
       const link = this.$refs.linkInput.value;
-      if (title.trim() === '' || description.trim() === '' || link.trim() === '') {
-        console.log('ddd')
+      this.inputIsInvalid = title.trim() === '' || description.trim() === '' || link.trim() === ''
+      if (this.inputIsInvalid) {
+        return;
       }
       this.addResource(title, description, link);
 
     },
+    confirmError() {
+      this.inputIsInvalid = false;
+    }
   }
 }
 </script>
 
 <template>
+  <base-dialog v-if="inputIsInvalid" title="Invalid Data">
+
+    <template #default>
+      <p>Please enter all data required.</p>
+    </template>
+    <template #actions>
+      <base-button @click="confirmError">Ok</base-button>
+    </template>
+  </base-dialog>
   <base-card>
     <form @submit.prevent="submitData">
       <div class="form-control">
