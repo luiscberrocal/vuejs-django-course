@@ -35,12 +35,22 @@ export default {
   },
   provide() {
     return {
-      resources: this.storedResources
+      resources: this.storedResources,
+      addResource: this.addResource
     }
   },
   methods: {
-    addResource(resource) {
-      this.storedResources.unshift(resource);
+    addResource(title, description, link) {
+      const res = {
+        id: new Date().toISOString(),
+        title: title,
+        // date: new Date().toISOString(),
+        description: description,
+        link: link
+      };
+      console.log('Add Resource', res)
+      this.storedResources.unshift(res);
+      this.setSelectTab('stored-resources');
     },
     setSelectTab(tab) {
       this.selectedTab = tab;
@@ -58,7 +68,7 @@ export default {
 </script>
 
 <template>
-  <base-card @add-ressource="addResource">
+  <base-card>
     <base-button @click="setSelectTab('stored-resources')"
                  :mode="setButtonMode1"
     >Stored Resources

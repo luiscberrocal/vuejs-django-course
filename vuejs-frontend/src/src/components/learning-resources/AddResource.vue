@@ -2,44 +2,41 @@
 export default {
   props: [],
   data() {
-    return {
-      newResource: {
-        title: '',
-        description: '',
-        link: ''
-      }
-    };
+    return {};
   },
-  emits: ['add-resource'],
+  inject: ['addResource'],
   methods: {
-    addResource(event) {
-      // event.preventDefault();
-      console.log(this.newResource);
-      this.$emit('add-resource', this.newResource);
-    }
-  },
-  computed: {}
+    submitData() {
+      console.log('Append Resource.....');
+      const title = this.$refs.titleInput.value;
+      const description = this.$refs.descriptionInput.value;
+      const link = this.$refs.linkInput.value;
+      console.log('Append Resource', title, description, link);
+      this.addResource(title, description, link);
+
+    },
+  }
 }
 </script>
 
 <template>
   <base-card>
-    <form>
-      <div class="form-control" @submit.prevent>
+    <form @submit.prevent="submitData">
+      <div class="form-control">
         <label for="title">Title</label>
-        <input type="text" id="title" v-model="newResource.title">
+        <input type="text" id="title" ref="titleInput">
       </div>
       <div class="form-control">
         <label for="description">Description</label>
-        <textarea id="description" rows="3" v-model="newResource.description"></textarea>
+        <textarea id="description" rows="3" ref="descriptionInput"></textarea>
       </div>
       <div class="form-control">
         <label for="link">Link</label>
-        <input type="url" id="link" v-model="newResource.link">
+        <input type="url" id="link" ref="linkInput">
       </div>
       <div class="form-control">
-        <base-button @click="addResource"
-                     type="submit"
+        <base-button
+            type="submit"
         >Add Resource
         </base-button>
       </div>
