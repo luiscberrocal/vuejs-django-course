@@ -1,6 +1,9 @@
 <script>
 
+import BaseButton from "../UI/BaseButton.vue";
+
 export default {
+  components: {BaseButton},
   props: [
     'title',
     'description',
@@ -19,8 +22,9 @@ export default {
       <header>
         <h3>{{ title }}</h3>
         <div>
-          <button>Delete</button>
-          <button>Share</button>
+          <base-button display-name="Delete"></base-button>
+          <base-button display-name="Check"></base-button>
+          <base-button display-name="Share"></base-button>
         </div>
       </header>
       <p>{{ description }}</p>
