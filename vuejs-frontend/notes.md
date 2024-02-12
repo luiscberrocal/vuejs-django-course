@@ -15,4 +15,8 @@
 
 Finished section 10. Resources app.
 
+## Tag 0.6.0 
+
+Finished section 11. Http requests.
+
 
