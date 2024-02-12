@@ -5,8 +5,9 @@
       <div>
         <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
-      <p v-if="isLoading" Loading...></p>
-      <ul v-if="!isLoading">
+      <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && (!results || results.length === 0)">No experiences found. Add a couple.</p>
+      <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
             v-for="result in results"
             :key="result.id"
