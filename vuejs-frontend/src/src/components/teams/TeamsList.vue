@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <router-view name="default"></router-view>
   <ul>
     <teams-item
         v-for="team in teams"
@@ -9,6 +9,7 @@
         :member-count="team.members.length"
     ></teams-item>
   </ul>
+  <router-view name="footer"></router-view>
 </template>
 
 <script>
