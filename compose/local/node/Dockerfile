@@ -3,19 +3,18 @@ FROM node:21.6-alpine3.19
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy the application's files into the container
-COPY ./vuejs-frontend/src .
+# Copy package.json and package-lock.json (if available)
+COPY ./vuejs-frontend/src/package*.json ./
 
-# Install http-server globally
-RUN npm install -g http-server
-# Install Vue CLI
-RUN npm install -g @vue/cli
-# Make port 8080 available to the world outside this container
-
+# Install project dependencies
 RUN npm install
 
+# # Copy the rest of the application's files into the container
+COPY ./vuejs-frontend/ .
+#
+# # Expose port 8080
 EXPOSE 8080
+#
+# # Use the local version of vue-cli-service
+CMD ["npx", "vue-cli-service", "serve"]
 
-# Run http-server when the container launches
-# CMD ["http-server", "-p 8080"]
-CMD ["npm", "run", "serve"]
