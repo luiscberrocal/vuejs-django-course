@@ -3,10 +3,10 @@
     <h2>{{ teamName }}</h2>
     <ul>
       <user-item
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
+          v-for="member in members"
+          :key="member.id"
+          :name="member.fullName"
+          :role="member.role"
       ></user-item>
     </ul>
   </section>
@@ -16,17 +16,21 @@
 import UserItem from '../users/UserItem.vue';
 
 export default {
+  inject: ['teams', 'users'],
   components: {
     UserItem
   },
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
-    };
+      teamName: '',
+      members: []
+    }
+  },
+  created() {
+    const teamId = this.$route.params.teamId;
+    const team = this.teams.find(t => t.id === teamId);
+    this.teamName = team.name;
+    this.members = this.users.filter(u => team.members.includes(u.id));
   },
 };
 </script>
