@@ -10,9 +10,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h4>User Footer</h4>
-  </div>
+  <h4>User Footer</h4>
 </template>
 
 <style scoped>

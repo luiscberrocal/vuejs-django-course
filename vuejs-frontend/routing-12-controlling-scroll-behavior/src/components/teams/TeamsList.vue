@@ -1,15 +1,14 @@
 <template>
-  <router-view name="main"></router-view>
+  <router-view></router-view>
   <ul>
     <teams-item
-        v-for="team in teams"
-        :key="team.id"
-        :id="team.id"
-        :name="team.name"
-        :member-count="team.members.length"
+      v-for="team in teams"
+      :key="team.id"
+      :id="team.id"
+      :name="team.name"
+      :member-count="team.members.length"
     ></teams-item>
   </ul>
-  <router-view name="footer"></router-view>
 </template>
 
 <script>
