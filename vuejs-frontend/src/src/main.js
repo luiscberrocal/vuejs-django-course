@@ -8,7 +8,7 @@ const app = createApp(App)
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/teams ', component: TeamsList},
+        {path: '/teams', component: TeamsList},
         {path: '/users', component: UsersList}
     ]
 })
