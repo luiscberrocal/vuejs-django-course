@@ -1,7 +1,68 @@
 version: '3'
 
+volumes:
+  vuejs_django_course_local_postgres_data: { }
+  vuejs_django_course_local_postgres_data_backups: { }
 
 services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: vuejs_django_course_local_django
+    container_name: vuejs_django_course_local_django
+    user: ${DOCKER_USER}
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    ports:
+      - '8000:8000'
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: vuejs_django_course_production_postgres
+    container_name: vuejs_django_course_local_postgres
+    volumes:
+      - vuejs_django_course_local_postgres_data:/var/lib/postgresql/data
+      - vuejs_django_course_local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+
+
+  redis:
+    image: docker.io/redis:6
+    container_name: vuejs_django_course_local_redis
+
+  celeryworker:
+    <<: *django
+    image: vuejs_django_course_local_celeryworker
+    container_name: vuejs_django_course_local_celeryworker
+    user: ${DOCKER_USER}
+    depends_on:
+      - redis
+      - postgres
+    ports: [ ]
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: vuejs_django_course_local_celerybeat
+    container_name: vuejs_django_course_local_celerybeat
+    user: ${DOCKER_USER}
+    depends_on:
+      - redis
+      - postgres
+    ports: [ ]
+    command: /start-celerybeat
+
   node:
     build:
       context: .
