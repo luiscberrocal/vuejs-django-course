@@ -6,6 +6,7 @@ import TeamMembers from "./components/teams/TeamMembers.vue";
 import TeamFooter from "./components/teams/TeamFooter.vue";
 import UserFooter from "./components/users/UserFooter.vue";
 import TeamsList from "./components/teams/TeamsList.vue";
+import PaymentList from "./components/payments/PaymentList.vue";
 
 const app = createApp(App)
 const router = createRouter({
@@ -20,6 +21,7 @@ const router = createRouter({
             ]
         },
         {path: '/users', components: {default: UsersList, footer: UserFooter}},
+        {path: '/payments', components: {default: PaymentList}},
         {path: '/:notFound(.*)', redirect: '/teams'}
     ],
     linkActiveClass: 'active'
