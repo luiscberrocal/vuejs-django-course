@@ -43,4 +43,17 @@ export default {
 
 <style scoped>
 
+div {
+  list-style: none;
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 0;
+}
 </style>
