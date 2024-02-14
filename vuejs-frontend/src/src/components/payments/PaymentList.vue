@@ -2,9 +2,26 @@
 export default {
   props: [],
   data() {
-    return {};
+    return {
+      recurrentPayments: []
+    };
   },
-  methods: {},
+  methods: {
+    loadPayments() {
+      fetch('http://127.0.0.1:8000/payments/recurrent-payemnts/')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            const payments = data.map(payment => {
+              return {
+                id: payment.id,
+                title: payment.name,
+              };
+            });
+            this.recurrentPayments = payments;
+          });
+    }
+  },
   computed: {}
 }
 </script>
@@ -12,10 +29,8 @@ export default {
 <template>
   <div>
     <h2>Payments</h2>
+    <button @click="loadPayments">Load Payments</button>
     <ul>
-      <li>Payment 1</li>
-      <li>Payment 2</li>
-      <li>Payment 3</li>
     </ul>
   </div>
 </template>

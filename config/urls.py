@@ -16,6 +16,7 @@ urlpatterns = [
     # User management
     path("users/", include("vuejs_django_course.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    path('api/payments/', include('vuejs_django_course.payments.api.urls', namespace='payments'))
     # Your stuff: custom urls includes go here
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
