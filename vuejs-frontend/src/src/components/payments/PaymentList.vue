@@ -1,5 +1,8 @@
 <script>
+import RecurrentPaymentItem from './RecurrentPaymentItem.vue';
+
 export default {
+  components: {RecurrentPaymentItem},
   props: [],
   data() {
     return {
@@ -34,9 +37,10 @@ export default {
     <h2>Payments</h2>
     <button @click="loadPayments">Load Payments</button>
     <ul>
-      <li v-for="payment in recurrentPayments" :key="payment.id">
-        {{ payment.name }} - {{ payment.amount }} - {{ payment.dateDue }}
-      </li>
+      <recurrent-payment-item
+          v-for="payment in recurrentPayments"
+          :key="payment.id"
+          :recurrent-payment="payment"></recurrent-payment-item>
     </ul>
   </div>
 </template>
