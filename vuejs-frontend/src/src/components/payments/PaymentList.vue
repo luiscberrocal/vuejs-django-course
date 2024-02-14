@@ -16,7 +16,9 @@ export default {
             const payments = data.map(payment => {
               return {
                 id: payment.id,
-                title: payment.name,
+                name: payment.name,
+                amount: payment.amount,
+                dateDue: payment.date_due,
               };
             });
             this.recurrentPayments = payments;
@@ -32,6 +34,9 @@ export default {
     <h2>Payments</h2>
     <button @click="loadPayments">Load Payments</button>
     <ul>
+      <li v-for="payment in recurrentPayments" :key="payment.id">
+        {{ payment.name }} - {{ payment.amount }} - {{ payment.dateDue }}
+      </li>
     </ul>
   </div>
 </template>
