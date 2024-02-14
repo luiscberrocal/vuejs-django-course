@@ -8,7 +8,8 @@ export default {
   },
   methods: {
     loadPayments() {
-      fetch('http://127.0.0.1:8000/payments/recurrent-payemnts/')
+      const url = 'http://127.0.0.1:8000/api/payments/recurrent-payments/'
+      fetch(url)
           .then(response => response.json())
           .then(data => {
             console.log(data);
