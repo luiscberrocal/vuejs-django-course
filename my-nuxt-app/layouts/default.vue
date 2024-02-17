@@ -21,7 +21,7 @@ export default {
           <li>
             <NuxtLink to="/about">About</NuxtLink>
           </li>
-          <li>
+          <li class="btn">
             <NuxtLink to="/products">Products</NuxtLink>
           </li>
         </ul>
