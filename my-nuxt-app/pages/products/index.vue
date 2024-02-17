@@ -1,12 +1,7 @@
-<script lang="ts">
-export default {
-  props: [],
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {}
-}
+<script lang="ts" setup>
+definePageMeta({
+  layout: "products",
+});
 </script>
 
 <template>
