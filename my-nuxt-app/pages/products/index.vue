@@ -10,9 +10,10 @@ export default {
 </script>
 
 <template>
-  <h1>About</h1>
-  <p>My application</p>
+  <h1>Products</h1>
+  <p>My products</p>
 </template>
+
 <style scoped>
 
 </style>
