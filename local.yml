@@ -74,3 +74,14 @@ services:
       - "8080:8080"
     volumes:
       - ./vuejs-frontend/src:/usr/src/app
+  nuxt:
+    build:
+      context: .
+      dockerfile: ./compose/local/nuxt/Dockerfile
+    image: vuejs_django_course_local_nuxt
+    container_name: vuejs_django_course_local_nuxt
+    user: ${DOCKER_USER}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./my-nuxt-app:/app
