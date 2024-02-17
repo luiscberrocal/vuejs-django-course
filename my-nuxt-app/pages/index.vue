@@ -13,6 +13,7 @@ export default {
   <div>
     <header>
       <nav>
+        <NuxtLink to="/">Nuxt Dojo</NuxtLink>
         <ul>
           <li>
             <NuxtLink to="/">Home</NuxtLink>
