@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const {data} = await useFetch('/api/currency/GBP')
+// const {data} = await useFetch('/api/ninja');
 </script>
 
 <template>
