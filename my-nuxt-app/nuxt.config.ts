@@ -16,5 +16,15 @@ export default defineNuxtConfig({
                 {rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'},
             ]
         }
+    },
+    runtimeConfig: {
+        currencyKey: process.env.CURRENCY_API_KEY,
+        // The private keys which are only available within server-side
+        apiSecret: '123',
+        // Keys within public, will be also exposed to the client-side
+        public: {
+            apiBase: '/api'
+        }
     }
+
 })
