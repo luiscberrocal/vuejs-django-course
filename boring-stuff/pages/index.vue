@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const url = 'http://127.0.0.1:8000/api/payments/recurrent-payments/'
 console.log(url)
-// const {data: recurrentPayments} = await useFetch(url).catch(err => console.log(err));
-const recurrentPayments = await useFetch(url).catch(err => console.log(err));
+const {data: recurrentPayments} = await useFetch(url)
+//const recurrentPayments = await useFetch(url); //.catch(err => console.log(err));
 console.log(recurrentPayments)
 </script>
 
