@@ -10,9 +10,14 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="container place-content-center">
     <h1>Boring stuff</h1>
     <p>Some boring stuff</p>
+    <div class="grid grid-cols-2 gap-2">
+      <div>Recurrent Payments</div>
+      <div>Payments</div>
+
+    </div>
   </div>
 </template>
 
