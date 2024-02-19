@@ -1,0 +1,15 @@
+version: '3'
+
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: ./compose/local/node/Dockerfile
+    image: vuejs_django_course_local_node
+    container_name: vuejs_django_course_local_node
+    user: ${DOCKER_USER}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./vuejs-frontend/src:/usr/src/app
