@@ -11,6 +11,10 @@ definePageMeta({
 </script>
 
 <template>
+  <head>
+    <Title>Nuxt Dojo | {{ product.title }}</Title>
+    <Meta name="description" :content="product.description"></Meta>
+  </head>
   <ProductDetails :product="product"></ProductDetails>
 </template>
 
