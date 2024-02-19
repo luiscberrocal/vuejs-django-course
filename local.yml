@@ -84,4 +84,4 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./my-nuxt-app:/app
+      - ./boring-stuff:/app
