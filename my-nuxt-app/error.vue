@@ -1,5 +1,9 @@
 <script setup>
 defineProps(['error'])
+
+const handleClearError = () => {
+  clearError({redirect: '/'})
+}
 </script>
 
 <template>
@@ -7,6 +11,7 @@ defineProps(['error'])
     <p class="mt-7 text-7xl font-bold">{{ error.statusCode }}</p>
     <p class="mt-7 text-6xl">Ooops</p>
     <p class="mt-7">{{ error.message }}</p>
+    <button class="btn" @click="handleClearError">Got home</button>
   </div>
 </template>
 

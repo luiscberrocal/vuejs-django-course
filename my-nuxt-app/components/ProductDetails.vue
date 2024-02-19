@@ -13,6 +13,10 @@ const {product} = defineProps(['product']);
         <p class="text-xl my-7">Price ${{ product.price }}</p>
         <h3 class="font-bold border-b2 mb-4 pb-2">Product description:</h3>
         <p>{{ product.description }}</p>
+        <button class="btn flex">
+          <span class="material-symbols-outlined">add_shopping_cart</span>
+          <span>Add to cart</span>
+        </button>
       </div>
     </div>
   </div>
