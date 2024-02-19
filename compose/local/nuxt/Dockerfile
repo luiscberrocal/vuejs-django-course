@@ -3,14 +3,16 @@ FROM node:21.6-alpine3.19
 # Set the working directory in the container
 WORKDIR /app
 
+ARG LOCAL_APP_PATH=./my-nuxt-app
+
 # Copy package.json and package-lock.json (if available)
-COPY ./my-nuxt-app/package*.json ./
+COPY ${LOCAL_APP_PATH}/package*.json ./
 
 # Install project dependencies
 RUN npm install
 
 # # Copy the rest of the application's files into the container
-COPY ./my-nuxt-app/ .
+COPY ${LOCAL_APP_PATH}/ .
 #
 # # Expose port 8080
 EXPOSE 3000
