@@ -1,12 +1,5 @@
-<script lang="ts">
-export default {
-  props: [],
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {}
-}
+<script lang="ts" setup>
+const now = new Date().toISOString();
 </script>
 
 <template>
@@ -14,11 +7,11 @@ export default {
   <div>
     <form action="">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" class="form-control">
+        <label for="date">Date:</label>
+        <input type="text" id="date" class="form-control" :value="now">
       </div>
       <div class="form-group mt-3">
-        <label for="amount">Amount</label>
+        <label for="amount">Amount:</label>
         <input type="number" id="amount" class="form-control">
       </div>
     </form>
