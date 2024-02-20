@@ -2,9 +2,9 @@
 const url = 'http://127.0.0.1:8000/api/payments/recurrent-payments/'
 console.log(url)
 const {data: recurrentPayments, error, status} = await useFetch(url);
-// const recurrentPayments = await useFetch(url); //.catch(err => console.log(err));
-console.log(recurrentPayments)
-console.log(error.value)
+
+
+
 </script>
 
 <template>
