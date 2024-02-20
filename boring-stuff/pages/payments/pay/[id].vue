@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 const now = new Date().toISOString();
 
+const {id} = useRoute().params;
 </script>
 
 <template>
-  <h2>Make Payment</h2>
+  <h2>Make Payment {{ id}}</h2>
   <div>
     <form action="">
       <div class="form-group">

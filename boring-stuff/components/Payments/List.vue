@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const {recurrentPayments} = defineProps(['recurrentPayments']);
-const makePayment = () => {
-  navigateTo('/payments/make-payment');
+const makePayment = (id) => {
+  navigateTo('/payments/pay/'+ id);
 }
-</script>
+</script>/
 
 <template>
   <ul>
@@ -12,7 +12,7 @@ const makePayment = () => {
         <div class="flex justify-between">
           <h3 class="text-xl font-bold">{{ payment.name }}</h3>
           <div class="flex">
-            <button class="btn flex mx-0.5" @click="makePayment">
+            <button class="btn flex mx-0.5" @click="makePayment(payment.id)">
               <span class="material-symbols-outlined">payments</span>
               <span>Pay</span>
             </button>
