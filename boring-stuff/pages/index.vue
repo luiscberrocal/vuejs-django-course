@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 const url = 'http://127.0.0.1:8000/api/payments/recurrent-payments/'
 console.log(url)
-const {data: recurrentPayments} = await useFetch(url)
-//const recurrentPayments = await useFetch(url); //.catch(err => console.log(err));
+const {data: recurrentPayments, error, status} = await useFetch(url);
+// const recurrentPayments = await useFetch(url); //.catch(err => console.log(err));
 console.log(recurrentPayments)
+console.log(error.value)
 </script>
 
 <template>
@@ -15,9 +16,9 @@ console.log(recurrentPayments)
         <header class="bg-gray-500 text-white p-4 rounded-lg">
           Recurrent Payments
         </header>
-        <p>Payment: {{ recurrentPayments }}</p>
+        <p>error: {{ error }}</p>
+        <p>status: {{ status }}</p>
         <ul>
-
           <li v-for="payment in recurrentPayments" :key="payment.id">
             <p>{{ payment.name }}</p>
             <p>{{ payment.amount }}</p>
