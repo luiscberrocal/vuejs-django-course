@@ -16,14 +16,11 @@ console.log(error.value)
         <header class="bg-gray-500 text-white p-4 rounded-lg">
           Recurrent Payments
         </header>
-        <p>error: {{ error }}</p>
-        <p>status: {{ status }}</p>
-        <ul>
-          <li v-for="payment in recurrentPayments" :key="payment.id">
-            <p>{{ payment.name }}</p>
-            <p>{{ payment.amount }}</p>
-          </li>
-        </ul>
+        <div v-if="error">
+          <p>error: {{ error }}</p>
+          <p>status: {{ status }}</p>
+        </div>
+        <PaymentsList :recurrentPayments="recurrentPayments"></PaymentsList>
       </div>
       <div>
         <header class="bg-gray-500 text-white">
