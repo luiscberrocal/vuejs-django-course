@@ -1,6 +1,6 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
-from vuejs_django_course.payments.api.serializers import RecurrentPaymentSerializer
+from vuejs_django_course.payments.api.serializers import RecurrentPaymentSerializer, PaymentSerializer
 from vuejs_django_course.payments.models import RecurrentPayment
 
 
@@ -18,3 +18,10 @@ class RecurrentPaymentDetailAPIView(RetrieveAPIView):
 
 
 recurrent_payment_detail_api_view = RecurrentPaymentDetailAPIView.as_view()
+
+
+class PaymentCreateAPIView(CreateAPIView):
+    serializer_class = PaymentSerializer
+
+
+payment_create_api_view = PaymentCreateAPIView.as_view()
