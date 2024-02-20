@@ -3,7 +3,7 @@ FROM node:21.6-alpine3.19
 # Set the working directory in the container
 WORKDIR /app
 
-ARG LOCAL_APP_PATH=./my-nuxt-app
+ARG LOCAL_APP_PATH=./boring-stuff
 
 # Copy package.json and package-lock.json (if available)
 COPY ${LOCAL_APP_PATH}/package*.json ./
