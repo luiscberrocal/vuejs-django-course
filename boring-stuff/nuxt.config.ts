@@ -3,8 +3,12 @@ export default defineNuxtConfig({
     ssr: false,
     devtools: {enabled: true},
     modules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@pinia/nuxt',
     ],
+    pinia: {
+        storesDirs: ['./stores/**',],
+    },
     app: {
         head: {
             title: 'Boring Stugg',
