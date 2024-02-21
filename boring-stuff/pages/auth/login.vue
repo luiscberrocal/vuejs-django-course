@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-//import { useAuthStore } from '@/stores/auth'; // Assuming you have an auth store set up with Pinia
+import { useAuthStore } from '@/stores/auth'; // Assuming you have an auth store set up with Pinia
 //import { useLoginComposable } from '@/composables/useLogin'; // We'll create this composable
 
 // Composable for login logic
-//const { username, password, login, errorMessage } = useLoginComposable();
+const { username, password, login, errorMessage } = useLoginComposable();
 
 // Pinia store
-//const authStore = useAuthStore();
+const authStore = useAuthStore();
 
 </script>
 
