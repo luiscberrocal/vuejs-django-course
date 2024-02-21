@@ -1,12 +1,4 @@
 <script lang="ts">
-export default {
-  props: [],
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {}
-}
 </script>
 
 <template>
@@ -20,6 +12,9 @@ export default {
           </li>
           <li>
             <NuxtLink to="/about">About</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/auth/login">Login</NuxtLink>
           </li>
         </ul>
       </nav>

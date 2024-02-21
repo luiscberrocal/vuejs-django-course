@@ -20,9 +20,15 @@ class RecurrentPaymentSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 
-class PaymentSerializer(serializers.Serializer):
+class PaymentSerializer(serializers.ModelSerializer):
     recurrent_payment = RecurrentPayment()
 
     class Meta:
         model = Payment
         fields = ('id', 'recurrent_payment', 'date', 'amount')
+
+    def create(self, validated_data):
+        #user = self.context['request'].user
+        #validated_data['created_by'] = user
+        payment = Payment.objects.create(**validated_data)
+        return payment
