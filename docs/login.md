@@ -7,6 +7,7 @@ With the following code template. Rewrite the Nuxt page to do the following.
 2 - Save the token to the local storage using Pinia
 3 - Create a composable to handle the login form
 
+
 <script lang="ts" setup>
 const url = 'http://127.0.0.1:8000/auth-token/'
 </script>

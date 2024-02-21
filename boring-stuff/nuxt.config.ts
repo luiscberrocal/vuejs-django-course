@@ -5,8 +5,12 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@pinia/nuxt',
+        '@nuxtjs/axios'
     ],
     pinia: {
+        autoImports: [
+            'defineStore',
+        ],
         storesDirs: ['./stores/**',],
     },
     app: {
