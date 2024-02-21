@@ -9,18 +9,21 @@ const {data: recurrentPayment, error, status} = await useFetch(url);
 // console.log('NEW AMOUNT', amount)
 const postPayment = async () => {
   console.log(recurrentPayment)
-  const url = `http://127.0.0.1:8000/api/payments/payments/create/`
+  const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
+  const payload = {
+    recurrent_payment: recurrentPayment.id,
+    date: '2024-02-20 13:13:13', //now,
+    // date: now,
+    amount: recurrentPayment.amount
+  }
+  console.log('payload', payload);
   //  const url = `http://`
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      recurrent_payment: recurrentPayment.id,
-      date: '2024-02-20', //now,
-      amount: recurrentPayment.amount
-    })
+    body: JSON.stringify({payload})
   });
   console.log('response', response);
 };
