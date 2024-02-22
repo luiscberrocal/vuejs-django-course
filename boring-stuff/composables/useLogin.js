@@ -23,6 +23,7 @@ export function useLoginComposable() {
             //console.log('response', response)
             authStore.setToken(token); // Save the token using your auth store
             errorMessage.value = '';
+            console.log('token', token);
             // Redirect or perform additional actions on successful login
         } catch (error) {
             errorMessage.value = 'Failed to login. Please check your credentials.';
