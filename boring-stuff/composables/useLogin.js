@@ -11,15 +11,15 @@ export function useLoginComposable() {
 
     const login = async () => {
         try {
-            const {token} = await useFetch('http://127.0.0.1:8000/auth-token/', {
+            const {token} = await $fetch('http://127.0.0.1:8000/api/auth-token/', {
                 method: 'POST',
-                body: {username, password},
+                body: JSON.stringify({username: username, password: password}),
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Request-Headers': 'Content-Type, Authorization', // This line is not a fix for CORS but demonstrates how to add headers
                     'Access-Control-Request-Method': 'POST', // This line is not a fix for CORS but demonstrates how to add headers
                 },
-            }).then(res => res.json());
+            }) //.then(res => res.json());
             //console.log('response', response)
             authStore.setToken(token); // Save the token using your auth store
             errorMessage.value = '';
