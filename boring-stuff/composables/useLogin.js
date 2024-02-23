@@ -13,7 +13,7 @@ export function useLoginComposable() {
         try {
             const {token} = await $fetch('http://127.0.0.1:8000/api/auth-token/', {
                 method: 'POST',
-                body: JSON.stringify({username: username, password: password}),
+                body: JSON.stringify({username: username.value, password: password.value}),
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Request-Headers': 'Content-Type, Authorization', // This line is not a fix for CORS but demonstrates how to add headers
@@ -26,6 +26,7 @@ export function useLoginComposable() {
             console.log('token', token);
             // Redirect or perform additional actions on successful login
         } catch (error) {
+            console.error("ERROR:", error)
             errorMessage.value = 'Failed to login. Please check your credentials.';
         }
     };
