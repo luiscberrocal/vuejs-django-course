@@ -20,25 +20,32 @@ const {id} = useRoute().params;
 
 const url = `http://127.0.0.1:8000/api/payments/recurrent-payments/${id}/`
 const {data: recurrentPayment, error, status} = await useFetch(url);
+const errorMessage = ref('');
 
 const postPayment = async () => {
-  console.log('recurrentPayment', recurrentPayment.value)
-  const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
-  const payload = {
-    recurrent_payment: recurrentPayment.value.id,
-    date: now.value,
-    amount: recurrentPayment.value.amount
+  try {
+
+    console.log('recurrentPayment', recurrentPayment.value)
+    const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
+    const payload = {
+      recurrent_payment: recurrentPayment.value.id,
+      date: now.value,
+      amount: recurrentPayment.value.amount
+    }
+    console.log('payload', payload);
+    //  const url = `http://`
+    const response = await $fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({payload})
+    });
+    console.log('response', response);
+  } catch (error) {
+    console.error('error', error);
+    errorMessage.value = error.message;
   }
-  console.log('payload', payload);
-  //  const url = `http://`
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({payload})
-  });
-  console.log('response', response);
 };
 
 </script>
@@ -57,6 +64,7 @@ const postPayment = async () => {
       </div>
       <button type="submit">Save</button>
     </form>
+    <p v-if="errorMessage" class="mt-2 text-sm text-red-600">{{ errorMessage }}</p>
   </div>
 </template>
 
