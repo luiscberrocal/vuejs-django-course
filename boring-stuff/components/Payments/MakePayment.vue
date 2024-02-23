@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const now = new Date().toISOString();
-
+const formattedDate = now.toISOString().replace('T', ' ').substring(0, 19);
+console.log('formattedDate', formattedDate);
 </script>
 
 <template>
@@ -9,7 +10,7 @@ const now = new Date().toISOString();
     <form action="">
       <div class="form-group">
         <label for="date">Date:</label>
-        <input type="text" id="date" class="form-control" :value="now">
+        <input type="text" id="date" class="form-control" v-model="formattedDate">
       </div>
       <div class="form-group mt-3">
         <label for="amount">Amount:</label>

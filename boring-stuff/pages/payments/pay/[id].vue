@@ -1,31 +1,51 @@
 <script lang="ts" setup>
-const now = new Date().toISOString();
+
+const getNow = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  console.log(formattedDate); // This will print the date in "YYYY-MM-DD HH:MM:SS" format
+  return formattedDate;
+}
+
+const now = ref(getNow());
 
 const {id} = useRoute().params;
 
 const url = `http://127.0.0.1:8000/api/payments/recurrent-payments/${id}/`
 const {data: recurrentPayment, error, status} = await useFetch(url);
-//let amount = await recurrentPayment.amount;
-// console.log('NEW AMOUNT', amount)
+const errorMessage = ref('');
+
 const postPayment = async () => {
-  console.log(recurrentPayment)
-  const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
-  const payload = {
-    recurrent_payment: recurrentPayment.id,
-    date: '2024-02-20 13:13:13', //now,
-    // date: now,
-    amount: recurrentPayment.amount
+  try {
+
+    console.log('recurrentPayment', recurrentPayment.value)
+    const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
+    const payload = {
+      recurrent_payment: recurrentPayment.value.id,
+      date: now.value,
+      amount: recurrentPayment.value.amount
+    }
+    console.log('payload', payload);
+    //  const url = `http://`
+    const response = await $fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    console.log('response', response);
+  } catch (error) {
+    console.error('error', error);
+    errorMessage.value = error.message;
   }
-  console.log('payload', payload);
-  //  const url = `http://`
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({payload})
-  });
-  console.log('response', response);
 };
 
 </script>
@@ -44,6 +64,7 @@ const postPayment = async () => {
       </div>
       <button type="submit">Save</button>
     </form>
+    <p v-if="errorMessage" class="mt-2 text-sm text-red-600">{{ errorMessage }}</p>
   </div>
 </template>
 
