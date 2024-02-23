@@ -39,7 +39,7 @@ const postPayment = async () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({payload})
+      body: JSON.stringify(payload)
     });
     console.log('response', response);
   } catch (error) {
