@@ -34,6 +34,10 @@ class PaymentCreateAPIView(CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         logger.warning(f'>>> PaymentCreateAPIView.post - data: {request.data}')
+        serializer = self.get_serializer(data=request.data)
+        is_valid = serializer.is_valid()
+        if not is_valid:
+            logger.error(f'>>> PaymentCreateAPIView.post - errors: {serializer.errors}')
         return super().post(request, *args, **kwargs)
 
 

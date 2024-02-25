@@ -21,14 +21,15 @@ class RecurrentPaymentSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
-    recurrent_payment = RecurrentPaymentSerializer()
+    # recurrent_payment = RecurrentPaymentSerializer()
+    recurrent_payment_name = serializers.CharField(source='recurrent_payment.name', read_only=True)
 
     class Meta:
         model = Payment
-        fields = ('id', 'recurrent_payment', 'date', 'amount')
+        fields = ('id', 'recurrent_payment', 'recurrent_payment_name', 'date', 'amount')
 
     def create(self, validated_data):
-        #user = self.context['request'].user
-        #validated_data['created_by'] = user
+        # user = self.context['request'].user
+        # validated_data['created_by'] = user
         payment = Payment.objects.create(**validated_data)
         return payment
