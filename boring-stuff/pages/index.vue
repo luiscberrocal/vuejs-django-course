@@ -4,6 +4,9 @@ console.log(url)
 const {data: recurrentPayments, error, status} = await useFetch(url);
 const paymentToCreate = null;
 
+const urlPayments = 'http://127.0.0.1:8000/api/payments/payments/';
+const {data: payments, error: errorPayments, status: statusPayments} = await useFetch(urlPayments);
+
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const paymentToCreate = null;
           <p>error: {{ error }}</p>
           <p>status: {{ status }}</p>
         </div>
-        <PaymentsList :recurrentPayments="recurrentPayments"></PaymentsList>
+        <PaymentsRecurrentList :recurrentPayments="recurrentPayments"></PaymentsRecurrentList>
       </div>
       <div>
         <header class="bg-gray-500 text-white p-4 rounded-lg">
@@ -28,6 +31,7 @@ const paymentToCreate = null;
         <div v-if="paymentToCreate">
           <PaymentsMakePayment></PaymentsMakePayment>
         </div>
+        <div>{{ payments }}</div>
       </div>
 
     </div>

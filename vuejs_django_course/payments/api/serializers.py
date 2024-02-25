@@ -21,7 +21,7 @@ class RecurrentPaymentSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
-    recurrent_payment = RecurrentPayment()
+    recurrent_payment = RecurrentPaymentSerializer()
 
     class Meta:
         model = Payment
