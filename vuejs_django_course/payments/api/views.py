@@ -6,6 +6,11 @@ from vuejs_django_course.payments.api.serializers import RecurrentPaymentSeriali
 from vuejs_django_course.payments.models import RecurrentPayment
 
 logger = logging.getLogger(__name__)
+from rest_framework.pagination import LimitOffsetPagination
+
+
+class StandardResultsSetPagination(LimitOffsetPagination):
+    default_limit = 200
 
 
 class RecurrentPaymentListAPIView(ListAPIView):
@@ -33,3 +38,9 @@ class PaymentCreateAPIView(CreateAPIView):
 
 
 payment_create_api_view = PaymentCreateAPIView.as_view()
+
+
+class PaymentListAPIView(ListAPIView):
+    serializer_class = PaymentSerializer
+    queryset = RecurrentPayment.objects.all()
+    pagination_class = StandardResultsSetPagination
