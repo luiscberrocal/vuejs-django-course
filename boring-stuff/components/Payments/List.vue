@@ -1,29 +1,33 @@
 <script setup lang="ts">
-const paymentsData = defineProps(['paymentsData']);
+defineProps(['paymentsData']);
 </script>
 
 <template>
   <div>
-      <div>
-          count {{ paymentsData.count }}
-      </div>
-      <div v-for="payment for paymentsData.results" :key="payment.id">
+    <div>
+      count {{ paymentsData.count }}
+    </div>
+    <div v-for="payment in paymentsData.results" :key="payment.id">
       <div class="card m-3">
-          <div class="flex justify-between">
-              <h3 class="text-xl font-bold">{{ payment.name }}</h3>
-              <div class="flex">
-                  <button class="btn flex mx-0.5">
-                      <span class="material-symbols-outlined">payments</span>
-                      <span>Pay</span>
-                  </button>
-              </div>
+        <div class="flex justify-between">
+          <h3 class="text-xl font-bold">{{ payment.recurrent_payment_name }}</h3>
+          <div class="flex">
+            <button class="btn flex mx-0.5">
+              <span class="material-symbols-outlined">edit</span>
+              <span>Edit</span>
+            </button>
+            <button class="btn flex mx-0.5">
+              <span class="material-symbols-outlined">delete</span>
+              <span>Delete</span>
+            </button>
           </div>
-          <div>
-              <p>Amount: ${{ payment.amount }}</p>
-          </div>
+        </div>
+        <div>
+          <p>Amount: ${{ payment.amount }}</p>
+          <p>Date: {{ payment.date }}</p>
+        </div>
       </div>
-      </div>
-      <div>{{ paymentsData}}</div>
+    </div>
   </div>
 </template>
 
