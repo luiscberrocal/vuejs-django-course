@@ -31,7 +31,7 @@ const {data: payments, error: errorPayments, status: statusPayments} = await use
         <div v-if="paymentToCreate">
           <PaymentsMakePayment></PaymentsMakePayment>
         </div>
-        <div>{{ payments }}</div>
+        <PaymentsList :payments-data="payments"></PaymentsList>
       </div>
 
     </div>
