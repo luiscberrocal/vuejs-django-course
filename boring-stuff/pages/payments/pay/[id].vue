@@ -51,20 +51,37 @@ const postPayment = async () => {
 </script>
 
 <template>
-  <h2>Make Payment for {{ recurrentPayment.name }}</h2>
-  <div>
-    <form @submit.prevent="postPayment">
-      <div class="form-group">
-        <label for="date">Date:</label>
-        <input type="text" id="date" class="text-input" v-model="now">
+
+  <div class="grid grid-cols-2 gap-2">
+    <div>
+      <header class="bg-gray-500 text-white p-4 rounded-lg">
+        Make Payment
+      </header>
+      <h3>Make Payment for {{ recurrentPayment.name }}</h3>
+      <div>
+        <form @submit.prevent="postPayment">
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="text" id="date" class="text-input" v-model="now">
+          </div>
+          <div class="form-group mt-3">
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" class="text-input" v-model="recurrentPayment.amount">
+          </div>
+          <button class="btn" type="submit">Save</button>
+        </form>
+        <p v-if="errorMessage" class="mt-2 text-sm text-red-600">{{ errorMessage }}</p>
       </div>
-      <div class="form-group mt-3">
-        <label for="amount">Amount:</label>
-        <input type="text" id="amount" class="text-input" v-model="recurrentPayment.amount">
+    </div>
+    <div>
+
+      <header class="bg-gray-500 text-white p-4 rounded-lg">
+        Payment
+      </header>
+      <div>
+        <p>BBBBBBBBBB</p>
       </div>
-      <button class="btn" type="submit">Save</button>
-    </form>
-    <p v-if="errorMessage" class="mt-2 text-sm text-red-600">{{ errorMessage }}</p>
+    </div>
   </div>
 </template>
 
