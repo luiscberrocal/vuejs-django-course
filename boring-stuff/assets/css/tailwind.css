@@ -8,13 +8,18 @@ body {
 
 @layer components {
   .btn {
-    @apply px-3 py-2 bg-[#12b488] text-white rounded-md text-sm;
+    @apply px-3 py-2 bg-green-500 text-white rounded-md text-sm;
   }
+
   .card {
     @apply bg-white shadow-md rounded-md p-3 h-full;
   }
-  .text-input{
+
+  .text-input {
     @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
   }
 
+  .bs-header {
+    @apply bg-green-800 text-white p-4 rounded-lg
+  }
 }

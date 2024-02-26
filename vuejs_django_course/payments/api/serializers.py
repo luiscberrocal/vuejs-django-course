@@ -37,7 +37,7 @@ class PaymentSerializer(serializers.ModelSerializer):
         payment = Payment.objects.create(**validated_data)
         return payment
 
-    def get_age(self, instance):
+    def get_age(self, instance) -> str:
         delta = timezone.now() - instance.date
         str_delta = humanize.precisedelta(delta, minimum_unit="minutes")
         return str_delta

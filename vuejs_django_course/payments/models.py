@@ -30,7 +30,7 @@ class RecurrentPayment(AuditableModel, TimeStampedModel):
 
 
 class Payment(AuditableModel, TimeStampedModel):
-    recurrent_payment = models.ForeignKey(RecurrentPayment, on_delete=models.CASCADE)
+    recurrent_payment = models.ForeignKey(RecurrentPayment, on_delete=models.CASCADE, related_name='payments')
     date = models.DateTimeField(help_text='Date of the payment')
     amount = models.DecimalField(max_digits=10, decimal_places=2, help_text='Amount of the payment')
     comments = models.TextField(null=True, blank=True, help_text='Comments of the payment')
@@ -39,4 +39,4 @@ class Payment(AuditableModel, TimeStampedModel):
         return f'{self.recurrent_payment.name} - {self.date}'
 
     class Meta:
-        ordering = ('date',)
+        ordering = ('-date',)

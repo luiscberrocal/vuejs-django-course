@@ -60,7 +60,7 @@ const postPayment = async () => {
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
     <div>
-      <header class="bg-gray-500 text-white p-4 rounded-lg">
+      <header class="bs-header">
         Make Payment
       </header>
       <h3>Make Payment for {{ recurrentPayment.name }}</h3>
@@ -80,7 +80,7 @@ const postPayment = async () => {
       </div>
     </div>
     <div>
-      <header class="bg-gray-500 text-white p-4 rounded-lg">
+      <header class="bs-header">
         Payment
       </header>
       <div>

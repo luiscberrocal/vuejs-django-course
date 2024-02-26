@@ -15,7 +15,7 @@ const {data: payments, error: errorPayments, status: statusPayments} = await use
     <p>Some boring stuff</p>
     <div class="grid grid-cols-2 gap-2">
       <div>
-        <header class="bg-gray-500 text-white p-4 rounded-lg">
+        <header class="bs-header">
           Recurrent Payments
         </header>
         <div v-if="error">
@@ -25,7 +25,7 @@ const {data: payments, error: errorPayments, status: statusPayments} = await use
         <PaymentsRecurrentList :recurrentPayments="recurrentPayments"></PaymentsRecurrentList>
       </div>
       <div>
-        <header class="bg-gray-500 text-white p-4 rounded-lg">
+        <header class="bs-header">
           Payments
         </header>
         <div v-if="paymentToCreate">
