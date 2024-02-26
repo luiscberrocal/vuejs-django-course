@@ -3,6 +3,7 @@ import logging
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from vuejs_django_course.payments.api.serializers import RecurrentPaymentSerializer, PaymentSerializer
+from vuejs_django_course.payments.filters import PaymentFilter
 from vuejs_django_course.payments.models import RecurrentPayment, Payment
 
 logger = logging.getLogger(__name__)
@@ -46,8 +47,10 @@ payment_create_api_view = PaymentCreateAPIView.as_view()
 
 class PaymentListAPIView(ListAPIView):
     serializer_class = PaymentSerializer
-    queryset = Payment.objects.all()
+    queryset = Payment.objects.all().order_by('-date')
     pagination_class = StandardResultsSetPagination
+    # filter_backends = [DjangoFilterBackend]
+    filterset_class = PaymentFilter
 
 
 payment_list_api_view = PaymentListAPIView.as_view()
