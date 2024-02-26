@@ -22,9 +22,11 @@ const url = `http://127.0.0.1:8000/api/payments/recurrent-payments/${id}/`
 const {data: recurrentPayment, error, status} = await useFetch(url);
 const errorMessage = ref('');
 
+const urlPayments = `http://127.0.0.1:8000/api/payments/payments/?limit=2&recurrent_payment=${id}`;
+const {data: payments, error: errorPayments, status: statusPayments} = await useFetch(urlPayments);
+
 const postPayment = async () => {
   try {
-
     console.log('recurrentPayment', recurrentPayment.value)
     const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
     const payload = {
@@ -33,7 +35,6 @@ const postPayment = async () => {
       amount: recurrentPayment.value.amount
     }
     console.log('payload', payload);
-    //  const url = `http://`
     const response = await $fetch(url, {
       method: 'POST',
       headers: {
@@ -52,7 +53,7 @@ const postPayment = async () => {
 
 <template>
 
-  <div class="grid grid-cols-2 gap-2">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
     <div>
       <header class="bg-gray-500 text-white p-4 rounded-lg">
         Make Payment
@@ -79,7 +80,7 @@ const postPayment = async () => {
         Payment
       </header>
       <div>
-        <p>BBBBBBBBBB</p>
+        <PaymentsList :payments-data="payments"></PaymentsList>
       </div>
     </div>
   </div>

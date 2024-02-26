@@ -17,7 +17,7 @@ defineProps(['paymentsData']);
               <span>Edit</span>
             </button>
             <button class="btn flex mx-0.5">
-              <span class="material-symbols-outlined">delete</span>
+              <span class="h-5 material-symbols-outlined">delete</span>
               <span>Delete</span>
             </button>
           </div>
