@@ -28,14 +28,14 @@ const {data: payments, error: errorPayments, status: statusPayments} = await use
 const postPayment = async () => {
   try {
     console.log('recurrentPayment', recurrentPayment.value)
-    const url = 'http://127.0.0.1:8000/api/payments/payments/create/'
+    const urlToPay = 'http://127.0.0.1:8000/api/payments/payments/create/'
     const payload = {
       recurrent_payment: recurrentPayment.value.id,
       date: now.value,
       amount: recurrentPayment.value.amount
     }
     console.log('payload', payload);
-    const response = await $fetch(url, {
+    const response = await $fetch(urlToPay, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -43,6 +43,11 @@ const postPayment = async () => {
       body: JSON.stringify(payload)
     });
     console.log('response', response);
+    // Assuming the response includes the newly created payment data
+    if (response && payments.value) {
+      payments.value.results.unshift(response);
+    }
+    //const {data: payments, error: errorPayments, status: statusPayments} = await $fetch(urlPayments);
   } catch (error) {
     console.error('error', error);
     errorMessage.value = error.message;
@@ -75,7 +80,6 @@ const postPayment = async () => {
       </div>
     </div>
     <div>
-
       <header class="bg-gray-500 text-white p-4 rounded-lg">
         Payment
       </header>
