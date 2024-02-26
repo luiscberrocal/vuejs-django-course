@@ -1,3 +1,5 @@
+import humanize
+from django.utils import timezone
 from rest_framework import serializers
 
 from vuejs_django_course.payments.models import RecurrentPayment, Payment
@@ -23,13 +25,19 @@ class RecurrentPaymentSerializer(serializers.ModelSerializer):
 class PaymentSerializer(serializers.ModelSerializer):
     # recurrent_payment = RecurrentPaymentSerializer()
     recurrent_payment_name = serializers.CharField(source='recurrent_payment.name', read_only=True)
+    age = serializers.SerializerMethodField()
 
     class Meta:
         model = Payment
-        fields = ('id', 'recurrent_payment', 'recurrent_payment_name', 'date', 'amount')
+        fields = ('id', 'recurrent_payment', 'recurrent_payment_name', 'date', 'amount', 'age')
 
     def create(self, validated_data):
         # user = self.context['request'].user
         # validated_data['created_by'] = user
         payment = Payment.objects.create(**validated_data)
         return payment
+
+    def get_age(self, instance):
+        delta = timezone.now() - instance.date
+        str_delta = humanize.precisedelta(delta, minimum_unit="minutes")
+        return str_delta

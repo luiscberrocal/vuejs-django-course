@@ -24,7 +24,7 @@ defineProps(['paymentsData']);
         </div>
         <div>
           <p>Amount: ${{ payment.amount }}</p>
-          <p>Date: {{ payment.date }}</p>
+          <p>Date: {{ payment.date }} <span>{{ payment.age}}</span></p>
         </div>
       </div>
     </div>
