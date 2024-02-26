@@ -56,13 +56,13 @@ const postPayment = async () => {
     <form @submit.prevent="postPayment">
       <div class="form-group">
         <label for="date">Date:</label>
-        <input type="text" id="date" class="form-control" v-model="now">
+        <input type="text" id="date" class="text-input" v-model="now">
       </div>
       <div class="form-group mt-3">
         <label for="amount">Amount:</label>
-        <input type="text" id="amount" class="form-control" v-model="recurrentPayment.amount">
+        <input type="text" id="amount" class="text-input" v-model="recurrentPayment.amount">
       </div>
-      <button type="submit">Save</button>
+      <button class="btn" type="submit">Save</button>
     </form>
     <p v-if="errorMessage" class="mt-2 text-sm text-red-600">{{ errorMessage }}</p>
   </div>
