@@ -23,8 +23,11 @@ console.preference = 'dark';
 <template>
   <div class="container mx-auto max-w-2xl mt-5">
     <header class="flex justify-between items-center">
-      <NuxtLink to="/" class="text-xl">Luis C. Berrocal</NuxtLink>
-      <Menu/>
+      <div class="flex items-center space-x-12">
+        <NuxtLink to="/" class="text-xl">Luis C. Berrocal</NuxtLink>
+        <Menu/>
+      </div>
+      <ColorModeSelector/>
     </header>
 
     <main class="p2 mt-10">
