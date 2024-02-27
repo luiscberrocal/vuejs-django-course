@@ -1,8 +1,10 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script lang="ts" setup>
+import {definePageMeta} from "#imports";
 
-export default defineComponent({
-  name: "about"
+definePageMeta({
+  title: "About",
+  description: "This is the about page",
+  layout: "another"
 })
 </script>
 
@@ -10,7 +12,6 @@ export default defineComponent({
   <div>
     <h1>About</h1>
     <p>This is the about page</p>
-
   </div>
 </template>
 
