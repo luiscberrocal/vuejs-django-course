@@ -14,10 +14,7 @@ useHead({
     }
   ]
 })
-const colorMode = useColorMode();
 
-console.log(colorMode.preference);
-console.preference = 'dark';
 </script>
 
 <template>
