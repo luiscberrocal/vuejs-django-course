@@ -4,8 +4,9 @@ defineProps(['paymentsData']);
 
 <template>
   <div>
-    <div>
-      count {{ paymentsData.count }}
+    <div class="container mx-auto p-4 flex justify-between">
+      <button class="btn w-32">Previous</button>
+      <button class="btn w-32">Next</button>
     </div>
     <div v-for="payment in paymentsData.results" :key="payment.id">
       <div class="card m-3">
@@ -24,10 +25,11 @@ defineProps(['paymentsData']);
         </div>
         <div>
           <p>Amount: ${{ payment.amount }}</p>
-          <p>Date: {{ payment.date }} <span>{{ payment.age}}</span></p>
+          <p>Date: {{ payment.date }} <span>{{ payment.age }}</span></p>
         </div>
       </div>
     </div>
+      <debug-block>{{ paymentsData}}</debug-block>
   </div>
 </template>
 

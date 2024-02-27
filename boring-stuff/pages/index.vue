@@ -4,7 +4,7 @@ console.log(url)
 const {data: recurrentPayments, error, status} = await useFetch(url);
 const paymentToCreate = null;
 
-const urlPayments = 'http://127.0.0.1:8000/api/payments/payments/';
+const urlPayments = 'http://127.0.0.1:8000/api/payments/payments/?limit=4';
 const {data: payments, error: errorPayments, status: statusPayments} = await useFetch(urlPayments);
 
 </script>
