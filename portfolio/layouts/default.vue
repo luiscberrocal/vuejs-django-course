@@ -3,11 +3,11 @@
 </script>
 
 <template>
-  <div class="container mx-auto max-w-2xl">
-    <header class="flex justify-between">
+  <div class="container mx-auto max-w-2xl mt-5">
+    <header class="flex justify-between items-center">
       <NuxtLink to="/" class="text-xl">Luis C. Berrocal</NuxtLink>
-      <nav>
-        <ul class="flex">
+      <nav class="font-mono">
+        <ul class="flex space-x-4">
           <li>
             <NuxtLink to="/">Home</NuxtLink>
           </li>
@@ -19,7 +19,10 @@
 
     </header>
 
-    <slot></slot>
+    <main class="p2">
+      <slot></slot>
+    </main>
+
 
   </div>
 </template>
