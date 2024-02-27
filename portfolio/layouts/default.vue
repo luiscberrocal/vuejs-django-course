@@ -22,7 +22,7 @@ useHead({
       <Menu/>
     </header>
 
-    <main class="p2">
+    <main class="p2 mt-10">
       <slot></slot>
     </main>
 
