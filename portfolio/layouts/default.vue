@@ -24,7 +24,9 @@ useHead({
         <NuxtLink to="/" class="text-xl">Luis C. Berrocal</NuxtLink>
         <Menu/>
       </div>
-      <ColorModeSelector/>
+      <ClientOnly>
+        <ColorModeSelector/>
+      </ClientOnly>
     </header>
 
     <main class="p2 mt-10">
