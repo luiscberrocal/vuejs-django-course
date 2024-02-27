@@ -1,10 +1,7 @@
 <script lang="ts" setup>
-import {definePageMeta} from "#imports";
 
-definePageMeta({
+useHead({
   title: "About",
-  description: "This is the about page",
-  layout: "another"
 })
 </script>
 
