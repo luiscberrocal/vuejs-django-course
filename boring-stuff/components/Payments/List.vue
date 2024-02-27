@@ -1,5 +1,8 @@
 <script setup lang="ts">
-defineProps(['paymentsData']);
+const {paymentsData} = defineProps(['paymentsData']);
+//const next = ref(paymentsData.next);
+//const previous = paymentsData.previous;
+
 </script>
 
 <template>
@@ -29,7 +32,8 @@ defineProps(['paymentsData']);
         </div>
       </div>
     </div>
-      <debug-block>{{ paymentsData}}</debug-block>
+    <debug-block>{{ paymentsData }}</debug-block>
+    <debug-block>{{ next }}</debug-block>
   </div>
 </template>
 
