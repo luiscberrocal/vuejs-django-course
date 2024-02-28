@@ -1,6 +1,7 @@
 ---
 creation date: 2022-08-22 17:00
 modification date: 2022-08-22 17:00
+toc: true
 ---
 
 # Reset Django migrations

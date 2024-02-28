@@ -6,6 +6,7 @@ head:
   meta:
     - name: 'og:image'
       content: /images/vue-logo.png
+toc: true
 ---
 # Introduction to Vue 3
 
