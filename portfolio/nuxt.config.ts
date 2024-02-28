@@ -8,5 +8,12 @@ export default defineNuxtConfig({
     ],
     colorMode: {
         classSuffix: ''
+    },
+    content: {
+        watch: {
+            ws: {
+                hostname: 'localhost'
+            }
+        }
     }
 })

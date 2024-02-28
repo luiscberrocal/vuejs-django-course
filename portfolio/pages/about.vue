@@ -1,15 +1,11 @@
 <script lang="ts" setup>
 
-useHead({
-  title: "About",
-})
 </script>
 
 <template>
-  <div>
-    <h1>About</h1>
-    <p>This is the about page</p>
-  </div>
+  <article class="prose dark:prose-invert prose-h1:text-2xl">
+    <ContentDoc path="/about"></ContentDoc>
+  </article>
 </template>
 
 <style scoped>
