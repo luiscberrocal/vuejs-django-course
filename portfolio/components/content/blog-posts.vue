@@ -13,9 +13,18 @@ console.log(posts);
 <template>
   <div>
     <section class="not-prose">
+      <div class="column">
+        <div>Year</div>
+        <div>Title</div>
+      </div>
       <ul>
         <li v-for="post in posts" :key="post._path">
-          <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
+          <NuxtLink :to="post._path" class="column hover:bg-gray-100 dark:hover: bg-gray-700">
+            <div class="text-gray-500">
+              2023
+            </div>
+            <div>{{ post.title }}</div>
+          </NuxtLink>
         </li>
       </ul>
     </section>
@@ -23,5 +32,7 @@ console.log(posts);
 </template>
 
 <style scoped>
-
+.column {
+  @apply flex items-center space-x-8 py-2 border-b border-gray-200 dark:border-gray-700;
+}
 </style>
