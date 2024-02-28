@@ -12,7 +12,7 @@ const repos = computed(() => data.value.filter(repo => repo.description)
 </script>
 
 <template>
-  <div>
+  <div class="not-prose">
     <section v-if="pending">Loading...</section>
     <section v-else-if="error">Error: {{ error.message }}</section>
     <section v-else>
@@ -33,7 +33,7 @@ const repos = computed(() => data.value.filter(repo => repo.description)
 
     </section>
 
-  </div>
+    </div>
 
 </template>
 

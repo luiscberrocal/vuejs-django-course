@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <article class="no-prose" >
+  <article class="prose dark:prose-invert max-w-none">
     <ContentDoc path="/projects"></ContentDoc>
   </article>
 </template>
