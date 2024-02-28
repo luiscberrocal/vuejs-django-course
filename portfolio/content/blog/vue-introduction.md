@@ -1,4 +1,5 @@
 ---
+creation date: 2024-02-23 08:03
 description: A beginner's guide to getting started with Vue 3.
 image: /images/vue-logo.png
 head:
