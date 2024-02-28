@@ -1,14 +1,18 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: "index"
-})
+const posts = await queryContent('/blog').only(['_path', 'title', 'description']).find();
+console.log(posts);
 </script>
 
 <template>
   <div>
-    <h1>All posts</h1>
+    <section>
+      <ul>
+        <li v-for="post in posts" :key="post._path">
+          <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
