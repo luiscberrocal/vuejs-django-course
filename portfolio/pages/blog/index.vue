@@ -1,6 +1,9 @@
-<script lang="ts" setup>
+<script setup>
 
-const posts = await queryContent('/blog').only(['_path', 'title', 'description']).find();
+const {data: posts} = await useAsyncData(
+    'post-list',
+    () => queryContent('/blog').only(['_path', 'title', 'description']).find()
+);
 console.log(posts);
 </script>
 
