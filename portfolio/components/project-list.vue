@@ -7,7 +7,6 @@ const {error, pending, data} = await useFetch(projectUrl, {
     console.log('>>>>>>>')
     console.log(context.response.headers);
   },
-
 });
 const repos = computed(() => data.value.filter(repo => repo.description)
     .sort((a, b) => b.stargazers_count - a.stargazers_count));
@@ -29,7 +28,6 @@ const repos = computed(() => data.value.filter(repo => repo.description)
             </div>
             <p>{{ repo.description }}</p>
             <p>Last push: {{ repo.pushed_at }}</p>
-            <p><img src="/images/icons8-python-48.png" class="max-h-6"/></p>
           </a>
         </li>
       </ul>
