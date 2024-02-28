@@ -28,7 +28,6 @@ mse
 # Calculating the Root Mean Squared Error (RMSE)
 rmse = np.sqrt(mse)
 rmse
-
 ```
 
 The Root Mean Squared Error (RMSE) for the given example is approximately $708.52

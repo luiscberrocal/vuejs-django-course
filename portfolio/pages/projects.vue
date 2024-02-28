@@ -7,10 +7,9 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
-    <h2 class="text-2xl font-semibold mb-10">Projects</h2>
-    <projectList></projectList>
-  </div>
+  <article class="no-prose" >
+    <ContentDoc path="/projects"></ContentDoc>
+  </article>
 </template>
 
 <style scoped>

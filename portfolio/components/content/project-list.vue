@@ -4,7 +4,6 @@ const forkIcon = '🔱';
 let projectUrl = 'https://api.github.com/users/luiscberrocal/repos?per_page=100';
 const {error, pending, data} = await useFetch(projectUrl, {
   onResponse(context) {
-    console.log('>>>>>>>')
     console.log(context.response.headers);
   },
 });
