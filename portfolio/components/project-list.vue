@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const lock = '🔒';
+const forkIcon = '🔱';
 let projectUrl = 'https://api.github.com/users/luiscberrocal/repos?per_page=100';
 const {error, pending, data} = await useFetch(projectUrl, {
   onResponse(context) {
@@ -22,10 +23,13 @@ const repos = computed(() => data.value.filter(repo => repo.description)
             :key="repo.id">
           <a :href="repo.html_url" target="_blank">
             <div class="flex justify-between items-center">
-              <h2 class="text-xl font-bold">{{ repo.name }}</h2>
+              <h2 class="text-xl font-bold"><span v-if="repo.fork">{{ forkIcon }}</span>{{ repo.name }} <span
+                  v-if="repo.fork">(Forked)</span></h2>
               <div>{{ repo.stargazers_count }} *</div>
             </div>
             <p>{{ repo.description }}</p>
+            <p>Last push: {{ repo.pushed_at }}</p>
+            <p><img src="/images/icons8-python-48.png" class="max-h-6"/></p>
           </a>
         </li>
       </ul>
