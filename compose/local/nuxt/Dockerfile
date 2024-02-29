@@ -3,7 +3,7 @@ FROM node:21.6-alpine3.19
 # Set the working directory in the container
 WORKDIR /app
 
-ARG LOCAL_APP_PATH=./boring-stuff
+ARG LOCAL_APP_PATH=./portfolio
 
 # Copy package.json and package-lock.json (if available)
 COPY ${LOCAL_APP_PATH}/package*.json ./
@@ -18,6 +18,5 @@ COPY ${LOCAL_APP_PATH}/ .
 EXPOSE 3000
 #
 # # Use the local version of vue-cli-service
-# npm run dev -- -o
 CMD ["npm", "run", "dev", "--", "-o"]
-
+# CMD ["tail", "-f", "/dev/null"]
