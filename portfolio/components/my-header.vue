@@ -1,31 +1,21 @@
 <template>
-  <div class="container">
-    <div class="image-container">
-      <img src="/images/Hagar.jpg" alt="" class="picture">
-    </div>
-    <NuxtLink to="/" class="name-link">
-      John Wick
-    </NuxtLink>
+  <div class="flex items-center">
+    <img src="/images/Hagar.jpg" alt="Profile picture" class="picture">
+    <NuxtLink to="/" class="link"> Luis C. Berrocal</NuxtLink>
   </div>
 </template>
 
-<style scoped>
-.container {
-  @apply flex items-center md:gap-8; /* This ensures the elements are in a flex row and aligned at the center */
-}
 
-.image-container {
-  @apply flex-shrink-0; /* Prevents the image container from shrinking */
+<style scoped>
+
+.link {
+  @apply hidden md:block text-2xl font-semibold ml-2;
+  /* Prevents the image container from shrinking */
 }
 
 .picture {
-  @apply rounded-full border-2 border-gray-200 dark:border-gray-700; /* Adjusts the size and border of the picture */
-  width: 5rem; /* Adjusts the width of the picture */
-  height: 5rem; /* Adjusts the height of the picture */
+  @apply rounded-full border-2 border-gray-200 dark:border-gray-700 w-8 h-8 md:w-16 md:h-16;
 }
 
-.name-link {
-  @apply text-xl text-left font-semibold p-2 hover:bg-gray-200 dark:hover:bg-gray-800; /* Styles the link */
-}
 </style>
 
