@@ -25,7 +25,7 @@
 }
 
 .name-link {
-  @apply text-xl font-semibold p-2 hover:bg-gray-200 dark:hover:bg-gray-800; /* Styles the link */
+  @apply text-xl text-left font-semibold p-2 hover:bg-gray-200 dark:hover:bg-gray-800; /* Styles the link */
 }
 </style>
 
