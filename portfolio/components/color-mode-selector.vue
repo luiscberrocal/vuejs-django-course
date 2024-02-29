@@ -29,7 +29,8 @@ const displayNextMode = ref(false);
     <button @click="toggleColorMode"
             @mouseenter="displayNextMode = true"
             @mouseleave="displayNextMode = false"
-            class="hover:bg-gray-200 dark:hover:bg-gray-600 px-2 py-1 text-gray-500">{{ nextModeIcon }}
+            class="hover:bg-gray-200 dark:hover:bg-gray-600 px-2 py-1 text-gray-500 text-4xl md:text-base">
+      {{ nextModeIcon }}
     </button>
   </div>
 </template>
