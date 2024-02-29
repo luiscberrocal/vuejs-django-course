@@ -1,8 +1,30 @@
 <script lang="ts" setup>
-const route = useRoute();
-
-console.log(route)
-
+const activeId = ref<string | null>(null);
+onMounted(() => {
+  const callback = (entries: IntersectionObserverEntry[]) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        activeId.value = entry.target.id;
+        break
+      }
+    }
+  };
+  const observer = new IntersectionObserver(callback, {
+    // root: null,
+    threshold: 0.5
+  });
+  const elements = document.querySelectorAll('h2, h3');
+  for (const element of elements) {
+    observer.observe(element);
+  }
+});
+onBeforeUnmount(() => {
+  console.log('On before unmount')
+  const elements = document.querySelectorAll('h2, h3');
+  for (const element of elements) {
+    observer.unobserve(element);
+  }
+});
 </script>
 
 
