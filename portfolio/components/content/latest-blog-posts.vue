@@ -1,12 +1,18 @@
 <script lang="ts" setup>
+defineProps({
+  limit: {
+    type: Number,
+    default: null
+  }
+});
 </script>
 
 <template>
-<BlogPosts v-slot="{posts}">
-  <div v-for="post in posts" :key="post.id">
-      <NuxtLink :to="posts._path">{{ post.title}}</NuxtLink>
-  </div>
-</BlogPosts>
+  <BlogPosts v-slot="{posts}" :limit="limit">
+    <div v-for="post in posts" :key="post.id">
+      <NuxtLink :to="posts._path">{{ post.title }}</NuxtLink>
+    </div>
+  </BlogPosts>
 </template>
 
 <style scoped>
