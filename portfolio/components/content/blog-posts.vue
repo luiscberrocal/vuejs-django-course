@@ -1,12 +1,22 @@
 <script setup>
-
+const props = defineProps({
+  limit: {
+    type: Number,
+    default: null
+  }
+});
 const {data} = await useAsyncData(
     'post-list',
-    () => queryContent('/blog')
-        .only(['_path', 'title', 'description', 'creation date'])
-        .where({_path: {$ne: '/blog'}})
-        .sort({'creation date': -1})
-        .find()
+    () => {
+      const query = queryContent('/blog')
+          .only(['_path', 'title', 'description', 'creation date'])
+          .where({_path: {$ne: '/blog'}})
+          .sort({'creation date': -1});
+      if (props.limit) {
+        query.limit(props.limit);
+      }
+      return query.find();
+    }
 );
 const posts = computed(
     () => {
@@ -27,7 +37,7 @@ console.log(posts);
 </script>
 
 <template>
-  <div>
+  <slot :posts="posts">
     <section class="not-prose">
       <div class="column">
         <div>Year</div>
@@ -45,7 +55,7 @@ console.log(posts);
         </li>
       </ul>
     </section>
-  </div>
+  </slot>
 </template>
 
 <style scoped>
