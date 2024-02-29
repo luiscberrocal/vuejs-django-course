@@ -28,5 +28,11 @@ export default defineNuxtConfig({
                 sepia: 'monokai'
             }
         }
+    },
+    nitro: {
+        prerender: {
+            routes: ['/sitemap.xml']
+        }
     }
+
 })

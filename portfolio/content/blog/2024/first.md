@@ -48,4 +48,3 @@ Tables:
 </html>
 ```
 
-[Go to the second article](/blog/second)
