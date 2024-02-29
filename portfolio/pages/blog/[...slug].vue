@@ -40,7 +40,7 @@ onBeforeUnmount(() => {
           <aside class="sticky top-8">
             <div class="font-semibold mb-2">Table of Contents</div>
             <nav>
-              <TocLinks :links="doc.body.toc.links"/>
+              <TocLinks :links="doc.body.toc.links" :active-id="activeId"/>
             </nav>
           </aside>
         </div>
