@@ -21,7 +21,8 @@ useHead({
   <div class="container mx-auto max-w-2xl mt-5">
     <header class="flex justify-between items-center">
       <div class="flex items-center space-x-12">
-        <NuxtLink to="/" class="text-xl">Luis C. Berrocal</NuxtLink>
+        <NuxtLink to="/" class="text-xl font-semibold p-2 hover:bg-gray-200 dark:hover:bg-gray-800">Luis C. Berrocal
+        </NuxtLink>
         <Menu/>
       </div>
       <ClientOnly>

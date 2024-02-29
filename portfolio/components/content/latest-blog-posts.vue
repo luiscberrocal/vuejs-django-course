@@ -10,7 +10,7 @@ defineProps({
 <template>
   <BlogPosts v-slot="{posts}" :limit="limit">
     <div v-for="post in posts" :key="post.id">
-      <NuxtLink :to="posts._path">{{ post.title }}</NuxtLink>
+      <NuxtLink :to="post._path">{{ post.title }}</NuxtLink>
     </div>
   </BlogPosts>
 </template>
