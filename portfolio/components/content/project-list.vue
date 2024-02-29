@@ -17,7 +17,7 @@ const repos = computed(() => data.value.filter(repo => repo.description)
     <section v-else-if="error">Error: {{ error.message }}</section>
     <section v-else>
       <ul class="grid grid-cols-1 gap-4">
-        <li v-for="repo in repos" class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 mono-font"
+        <li v-for="repo in repos" class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 dark:hover:bg-gray-700 mono-font"
             :key="repo.id">
           <a :href="repo.html_url" target="_blank">
             <div class="flex justify-between items-center">
