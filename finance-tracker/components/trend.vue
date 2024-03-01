@@ -20,6 +20,18 @@ const trendingUp = computed(() => {
 const icon = computed(() => {
   return trendingUp.value ? 'i-heroicons-arrow-trending-up' : 'i-heroicons-arrow-trending-down'
 })
+const percentageTrend = computed(() => {
+  if (props.lastAmount === 0 || props.amount === 0) {
+    return '⚓%'
+  }
+  const bigger = Math.max(props.amount, props.lastAmount);
+  const smaller = Math.min(props.amount, props.lastAmount);
+  const ratio = ((bigger - smaller) / smaller) * 100;
+  console.log('ratio', Math.ceil(ratio), 'big', bigger, 'small', smaller);
+  return `${Math.ceil(ratio)}%`
+})
+
+
 </script>
 
 <template>
@@ -36,7 +48,7 @@ const icon = computed(() => {
       <div v-else class="flex space-x-1 items-center text-sm">
         <UIcon :name="icon" class="w-6 h-6" :class="{'green': trendingUp, 'red': !trendingUp}"/>
         <div class="text-gray-500 dark:text-gray-400">
-          30% up from last month.
+          {{ percentageTrend }} vs last period.
         </div>
       </div>
 
