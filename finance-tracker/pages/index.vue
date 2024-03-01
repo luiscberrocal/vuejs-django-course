@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const viewOptions = ['Yearly', 'Monthly', 'Weekly', 'Daily'];
+
+import {viewOptions} from "~/constants";
+
 const selectedView = ref(viewOptions[1]);
 
 </script>
@@ -10,6 +12,12 @@ const selectedView = ref(viewOptions[1]);
     <div>
       <USelectMenu :options="viewOptions" v-model="selectedView"/>
     </div>
+  </section>
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-16 mb-10">
+    <Trend title="Income" color="green" :amount="3000" last-amount="4000" :loading="false"/>
+    <Trend title="Income" color="red" :amount="3000" last-amount="4000" :loading="false"/>
+    <Trend title="Income" color="green" :amount="3000" last-amount="4000" :loading="false"/>
+    <Trend title="Income" color="red" :amount="3000" last-amount="4000" :loading="true"/>
 
   </section>
 </template>
