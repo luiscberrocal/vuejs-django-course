@@ -4,7 +4,8 @@ import {viewOptions} from "~/constants";
 
 const selectedView = ref(viewOptions[1]);
 const isLoading = ref(false);
-const transactions = ref([])
+const transactions = ref([]);
+const isOpen = ref(false);
 
 const income = computed(() => transactions.value.filter(transaction => transaction.type === 'Income'));
 const expense = computed(() => transactions.value.filter(transaction => transaction.type === 'Expense'));
@@ -66,6 +67,27 @@ console.log(transactionsGroupedByDate.value)
     <Trend title="Expense" color="red" :amount="expenseTotal" last-amount="3000" :loading="isLoading"/>
     <Trend title="Investments" color="green" :amount="3000" last-amount="2000" :loading="isLoading"/>
     <Trend title="Savings" color="red" :amount="3000" last-amount="4000" :loading="isLoading"/>
+  </section>
+  <section class="flex justify-between mb-10">
+    <div>
+      <h2 class="text-2xl font-extrabold">Transactions</h2>
+      <div class="text-gray-500 dark:text-gray-400">
+        You have {{ incomeCount }} income transactions and {{ expenseCount }} expense transactions for this period.
+      </div>
+    </div>
+    <div>
+      <UModal v-model="isOpen">
+        <UCard>
+          <template #header>
+            Add Transaction
+          </template>
+
+          <div>Hello!</div>
+        </UCard>
+      </UModal>
+      <UButton icon="i-heroicons-plus-circle" label="Add" color="white" variant="solid"
+               @click="isOpen = true"></UButton>
+    </div>
   </section>
 
   <section v-if="!isLoading">
