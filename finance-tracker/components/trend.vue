@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-defineProps(
+const props = defineProps(
     {
       title: String,
       amount: Number,
@@ -13,11 +13,18 @@ defineProps(
       }
     }
 )
+const trendingUp = computed(() => {
+  return props.amount >= props.lastAmount
+})
+
+const icon = computed(() => {
+  return trendingUp.value ? 'i-heroicons-arrow-trending-up' : 'i-heroicons-arrow-trending-down'
+})
 </script>
 
 <template>
   <div>
-    <div class="font-bold" :class="[color]">{{ title }}</div>
+    <div class="font-bold" :class="{'green': trendingUp, 'red': !trendingUp}">{{ title }}</div>
     <div class="text-2xl font-extrabold text-black dark:text-white mb-2">
       <USkeleton v-if="loading" class="w-full h-8"/>
       <div v-else>
@@ -27,7 +34,7 @@ defineProps(
     <div>
       <USkeleton v-if="loading" class="w-full h-6"/>
       <div v-else class="flex space-x-1 items-center text-sm">
-        <UIcon name="i-heroicons-arrow-trending-up" class="w-6 h-6" :class="[color]"/>
+        <UIcon :name="icon" class="w-6 h-6" :class="{'green': trendingUp, 'red': !trendingUp}"/>
         <div class="text-gray-500 dark:text-gray-400">
           30% up from last month.
         </div>
