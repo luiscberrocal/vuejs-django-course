@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-const {currency} = useCurrency(3000);
+const props = defineProps(
+    {
+      transaction: Object
+    }
+)
+const {currency} = useCurrency(props.transaction.amount);
 const items = [
   [
     {
@@ -25,10 +30,10 @@ const items = [
     <div class="flex items-center justify-between">
       <div class="flex items-center space-x-1">
         <UIcon name="i-heroicons-arrow-up-right" class="text-green-600"></UIcon>
-        <div>Salary</div>
+        <div>{{ transaction.description }}</div>
       </div>
       <div>
-        <UBadge color="white">Category</UBadge>
+        <UBadge color="white" v-if="transaction.category">{{ transaction.category }}</UBadge>
       </div>
     </div>
     <div class="flex items-center justify-end space-x-2">
