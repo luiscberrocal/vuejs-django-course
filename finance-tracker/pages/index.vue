@@ -60,13 +60,16 @@ console.log(transactionsGroupedByDate.value)
     <Trend title="Savings" color="red" :amount="3000" last-amount="4000" :loading="isLoading"/>
   </section>
 
-  <section>
+  <section v-if="!isLoading">
     <div v-for="(transactionsOnDay, date) in transactionsGroupedByDate" :key="date" class="mb-10">
       <DailyTransactionSummary :date="date" :transactions="transactionsOnDay"/>
       <Transaction v-for="transaction in transactionsOnDay" :key="transaction.id"
                    :transaction="transaction"
                    @deleted="refreshTransactions()"/>
     </div>
+  </section>
+  <section v-else>
+    <USkeleton class="w-full h-8 mb-2" v-for="i in 4" :key="i"/>
   </section>
 </template>
 
