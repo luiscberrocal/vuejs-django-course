@@ -4,6 +4,7 @@ const props = defineProps(
       transaction: Object
     }
 )
+const emit = defineEmits(['deleted'])
 const {currency} = useCurrency(props.transaction.amount);
 const isLoading = ref(false);
 
@@ -18,6 +19,7 @@ const deleteTransaction = async () => {
       icon: 'i-heroicons-check-circle',
       color: 'green'
     })
+    emit('deleted', props.transaction.id);
   } catch (error) {
     toast.add({
       title: 'Error while deleting transaction',
