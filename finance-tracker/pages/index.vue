@@ -5,12 +5,22 @@ import {viewOptions} from "~/constants";
 const selectedView = ref(viewOptions[1]);
 const supabase = useSupabaseClient();
 
-const {data, error} = await supabase.from('transactions').select('*');
-console.log('data', data, 'error', error);
+//const {data, error} = await supabase.from('transactions').select('*');
+const {data, pending} = await useAsyncData('transactions',
+    async () => {
+      const {data, error} = await supabase.from('transactions').select('*');
+      return data;
+      if (error) {
+        return []
+        //throw error;
+      }
+      return data
+    });
+//console.log('data', data, 'error', error);
 
 const transactions = ref([])
 
-transactions.value = data;
+transactions.value = data.value;
 
 
 </script>
@@ -30,7 +40,7 @@ transactions.value = data;
   </section>
 
   <section>
-      <Transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></Transaction>
+    <Transaction v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"></Transaction>
   </section>
 </template>
 
