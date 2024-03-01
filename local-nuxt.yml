@@ -1,6 +1,5 @@
 version: '3'
 
-
 services:
   nuxt:
     build:
@@ -11,6 +10,5 @@ services:
     user: ${DOCKER_USER}
     ports:
       - "3000:3000"
-      - "4000:4000"
     volumes:
-      - ./portfolio:/app
+      - ./finance-tracker:/app
