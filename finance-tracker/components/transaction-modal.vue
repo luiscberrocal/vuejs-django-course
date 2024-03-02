@@ -11,7 +11,7 @@ const isOpen = computed(
     {
       get: () => props.modelValue,
       set: (value) => {
-       // if (!value) resetForm();
+        if (!value) resetForm();
         emit('update:modelValue', value);
       }
     }
@@ -54,7 +54,7 @@ const state = ref({
 )
 const resetForm = () => {
   Object.assign(state.value, initialState);
-  form.value.clear();
+  //form.value.errors.clear();
 }
 const form = ref(null)
 
