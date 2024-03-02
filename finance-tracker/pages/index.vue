@@ -23,7 +23,9 @@ const fetchTransactions = async () => {
   try {
     const {data} = await useAsyncData('transactions',
         async () => {
-          const {data, error} = await supabase.from('transactions').select('*');
+          const {data, error} = await supabase.from('transactions')
+              .select('*')
+              .order('created_at', {ascending: false})
           return data;
           if (error) {
             return []
