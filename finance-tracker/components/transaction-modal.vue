@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import {categories, transactionTypes} from "~/constants";
+import {z} from "zod";
 
 const props = defineProps({
   modelValue: Boolean
@@ -12,6 +13,30 @@ const isOpen = computed(
       set: (value) => emit('update:modelValue', value)
     }
 )
+const defaultSchema = z.object({
+  // type: z.enum(transactionTypes),
+  amount: z.number().positive('Amount need to be positive'),
+  created_at: z.string(),
+  description: z.string().optional(),
+  // category: z.enum(categories)
+})
+const incomeSchema = defaultSchema.extend({
+  type: z.literal('Income')
+})
+const investmentSchema = defaultSchema.extend({
+  type: z.literal('Investment')
+})
+const savingsSchema = defaultSchema.extend({
+  type: z.literal('Savings')
+})
+const expenseSchema = defaultSchema.extend({
+  type: z.literal('Expense'),
+  category: z.enum(categories)
+})
+const schema = z.intersection(
+    z.discriminatedUnion('type', [incomeSchema, expenseSchema, investmentSchema, savingsSchema]),
+    defaultSchema
+)
 
 const state = ref({
   type: 'Expense',
@@ -20,6 +45,15 @@ const state = ref({
   description: undefined,
   category: undefined
 })
+const form = ref(null)
+
+const save = async () => {
+  if (form.value.validate()) {
+    console.log('Valid')
+  } else {
+    console.log('Invalid')
+  }
+}
 
 </script>
 
@@ -29,7 +63,7 @@ const state = ref({
       <template #header>
         Add Transaction
       </template>
-      <UForm :state="state">
+      <UForm :state="state" :schema="schema" :ref="form" @submit.prevent="save">
         <UFormGroup label="Transaction type" name="type" :required="true" class="mb-4">
           <USelect placeholder="Transaction type" :options="transactionTypes" v-model="state.type"></USelect>
         </UFormGroup>
@@ -42,7 +76,7 @@ const state = ref({
         <UFormGroup label="Description" name="description" :required="false" class="mb-4">
           <UInput type="text" placeholder="Transaction description" v-model="state.description"/>
         </UFormGroup>
-        <UFormGroup label="Category" name="category" :required="true" class="mb-4">
+        <UFormGroup label="Category" name="category" :required="true" class="mb-4" v-if="state.type=='Expense'">
           <USelect placeholder="Categories" :options="categories" v-model="state.category"></USelect>
         </UFormGroup>
         <UButton type="submit" color="black" variant="solid">Save</UButton>
