@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import {categories, transactionTypes} from "~/constants";
 import {z} from "zod";
 
@@ -6,7 +6,7 @@ const props = defineProps({
   modelValue: Boolean
 })
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'saved']);
 const isOpen = computed(
     {
       get: () => props.modelValue,
@@ -17,22 +17,22 @@ const isOpen = computed(
     }
 )
 const defaultSchema = z.object({
-  // type: z.enum(transactionTypes),
+  // type: z.enum(transactionTypes),`
   amount: z.number().positive('Amount need to be positive'),
   created_at: z.string(),
   description: z.string().optional(),
   // category: z.enum(categories)
 })
-const incomeSchema = defaultSchema.extend({
+const incomeSchema = z.object({
   type: z.literal('Income')
 })
-const investmentSchema = defaultSchema.extend({
+const investmentSchema = z.object({
   type: z.literal('Investment')
 })
-const savingsSchema = defaultSchema.extend({
+const savingsSchema = z.object({
   type: z.literal('Savings')
 })
-const expenseSchema = defaultSchema.extend({
+const expenseSchema = z.object({
   type: z.literal('Expense'),
   category: z.enum(categories)
 })
@@ -56,17 +56,47 @@ const resetForm = () => {
   Object.assign(state.value, initialState);
   //form.value.errors.clear();
 }
-const form = ref(null)
+const form = ref();
+const isLoading = ref(false);
+
+const supabase = useSupabaseClient();
+const toast = useToast();
 
 const save = async () => {
-  if (form.value.errors.length > 0) {
-    return
+  console.log('>>>>>>>>>>>>>>>>>>>>>')
+  if (form.value.errors.length) return
+  isLoading.value = true;
+  try {
+    console.log('Saving transaction', state.value)
+    const {error} = await supabase.from('transactions')
+        .upsert({...state.value});
+    // error = null;
+    //if (error) {
+    //  throw error;
+    //}
+    if (!error) {
+      toast.add({
+        title: 'Transaction added',
+        icon: 'i-heroicons-check-circle',
+        color: 'green'
+      })
+      isOpen.value = false;
+      emit('saved');
+    } else {
+      console.log('Error while adding transaction', error)
+    }
+  } catch (error) {
+    toast.add({
+      title: 'Error while adding transaction',
+      description: error.message,
+      icon: 'i-heroicons-exclamation-circle',
+      color: 'red'
+    })
+    console.error(error)
+
+  } finally {
+    isLoading.value = false;
   }
-  // if (form.value.validate()) {
-  //   console.log('Valid')
-  // } else {
-  //   console.log('Invalid')
-  // }
 }
 
 </script>
@@ -93,7 +123,7 @@ const save = async () => {
         <UFormGroup label="Category" name="category" :required="true" class="mb-4" v-if="state.type=='Expense'">
           <USelect placeholder="Categories" :options="categories" v-model="state.category"></USelect>
         </UFormGroup>
-        <UButton type="submit" color="black" variant="solid">Save</UButton>
+        <UButton type="submit" color="black" variant="solid" :loading="isLoading">Save</UButton>
       </UForm>
     </UCard>
   </UModal>
