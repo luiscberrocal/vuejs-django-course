@@ -10,7 +10,10 @@ const emit = defineEmits(['update:modelValue']);
 const isOpen = computed(
     {
       get: () => props.modelValue,
-      set: (value) => emit('update:modelValue', value)
+      set: (value) => {
+       // if (!value) resetForm();
+        emit('update:modelValue', value);
+      }
     }
 )
 const defaultSchema = z.object({
@@ -38,21 +41,32 @@ const schema = z.intersection(
     defaultSchema
 )
 
-const state = ref({
+const initialState = {
   type: 'Expense',
   amount: 0,
   created_at: new Date().toISOString().split('T')[0],
   description: undefined,
   category: undefined
-})
+}
+const state = ref({
+      ...initialState
+    }
+)
+const resetForm = () => {
+  Object.assign(state.value, initialState);
+  form.value.clear();
+}
 const form = ref(null)
 
 const save = async () => {
-  if (form.value.validate()) {
-    console.log('Valid')
-  } else {
-    console.log('Invalid')
+  if (form.value.errors.length > 0) {
+    return
   }
+  // if (form.value.validate()) {
+  //   console.log('Valid')
+  // } else {
+  //   console.log('Invalid')
+  // }
 }
 
 </script>
