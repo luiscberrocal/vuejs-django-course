@@ -1,4 +1,4 @@
 #!/usr/bin/zsh
 
-docker-compose -f local-nuxt.yml build
+docker compose -f local-nuxt.yml build
 
