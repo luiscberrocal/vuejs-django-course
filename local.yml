@@ -84,4 +84,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./portfolio:/app
+      - ./finance-tracker:/usr/src/app
+      - /finance-tracker/node_modules

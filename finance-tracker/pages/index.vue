@@ -26,14 +26,17 @@ const fetchTransactions = async () => {
           const {data, error} = await supabase.from('transactions')
               .select('*')
               .order('created_at', {ascending: false})
+          console.log('>>> DATA', data);
           return data;
           if (error) {
-            return []
-            //throw error;
+            //return []
+            throw error;
           }
           return data
         });
     return data.value;
+  } catch (error) {
+    console.error('>>> ERROR', error);
   } finally {
     isLoading.value = false;
   }
