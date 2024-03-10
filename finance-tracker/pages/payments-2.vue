@@ -22,7 +22,7 @@ const {data: payments, error: errorPayments, status: statusPayments} = await use
           <p>error: {{ error }}</p>
           <p>status: {{ status }}</p>
         </div>
-        <DebugBlock>
+        <DebugBlock level="info">
           <template #title>Recurrent Payments</template>
           recurrentPayments: {{ recurrentPayments }}
         </DebugBlock>
