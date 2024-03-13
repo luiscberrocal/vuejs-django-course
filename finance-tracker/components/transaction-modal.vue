@@ -66,14 +66,25 @@ const schema = z.intersection(
     defaultSchema
 )
 
+// Attempt to fix issue with Zod schema
+const schema2 = z.object({
+  type: z.enum(['Income', 'Expense', 'Investment', 'Saving']),
+  amount: z.number().positive('Amount needs to be more than 0'),
+  created_at: z.string(),
+  description: z.string().optional(),
+  category: z.enum(categories).optional()
+})
+// Attempt to fix issue with Zod schema
+const fake_save = async () => {
+  console.log('>>> STATE', state.value);
+  console.log('>>> FORM', form.value);
+}
+
 const form = ref()
 const isLoading = ref(false)
 const supabase = useSupabaseClient()
 const toast = useToast()
-const dd = async () => {
-  console.log('>>> STATE', state.value);
-  console.log('>>> FORM', form.value);
-}
+
 const save = async () => {
   console.log('>>> STATE', state.value);
   console.log('>>> FORM', form.value);
@@ -111,7 +122,8 @@ const save = async () => {
 const initialState = {
   type: "Income",//undefined,
   amount: 0,
-  created_at: new Date().toLocaleDateString(), //undefined,
+  // created_at: new Date(), //undefined,
+  created_at: new Date().toISOString().split('T')[0],
   description: undefined,
   category: undefined
 }

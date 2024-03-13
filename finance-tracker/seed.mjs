@@ -40,7 +40,7 @@ async function seedTransactions() {
             } else if (typeBias < 0.95) {
                 type = 'Income'
             } else {
-                type = faker.helpers.arrayElement(['Savings', 'Investment'])
+                type = faker.helpers.arrayElement(['Saving', 'Investment'])
             }
 
             let amount
