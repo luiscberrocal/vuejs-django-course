@@ -1,17 +1,13 @@
 import logging
 
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
-from rest_framework.pagination import LimitOffsetPagination
 
+from vuejs_django_course.core.pagination import StandardResultsSetPagination
 from vuejs_django_course.payments.api.serializers import RecurrentPaymentSerializer, PaymentSerializer
 from vuejs_django_course.payments.filters import PaymentFilter
 from vuejs_django_course.payments.models import RecurrentPayment, Payment
 
 logger = logging.getLogger(__name__)
-
-
-class StandardResultsSetPagination(LimitOffsetPagination):
-    default_limit = 200
 
 
 class RecurrentPaymentListAPIView(ListAPIView):
