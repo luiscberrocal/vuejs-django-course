@@ -2,7 +2,7 @@
 const exercisesSummaries = [
   {
     name: 'Pushups',
-    average: 100,
+    average: 35,
     todaysCount: 50
   },
   {
