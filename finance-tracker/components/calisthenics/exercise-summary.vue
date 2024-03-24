@@ -24,7 +24,7 @@ const icon = computed(() => {
 </script>
 
 <template>
-  <div class="m-2 p-1 border-1">
+  <div class="m-2 p-1">
     <div class="font-bold" :class="{'green': trendingUp, 'red': !trendingUp}">{{ name }}</div>
     <p>Average: {{ average }}</p>
     <p>Today's Count: {{ todaysCount }}</p>
