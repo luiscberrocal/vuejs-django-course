@@ -22,14 +22,12 @@ const exercisesSummaries = [
   <div>
     <h1>Calisthenics</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-16">
-      <div v-for="exercise in exercisesSummaries" :key="exercise.name"
-      >
-        <CalisthenicsExerciseSummary
-            :name="exercise.name"
-            :average="exercise.average"
-            :todaysCount="exercise.todaysCount"
-        />
-      </div>
+      <CalisthenicsExerciseSummary
+          v-for="exercise in exercisesSummaries" :key="exercise.name"
+          :name="exercise.name"
+          :average="exercise.average"
+          :todaysCount="exercise.todaysCount"
+      />
     </div>
   </div>
 </template>
